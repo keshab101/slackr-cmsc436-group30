@@ -9,6 +9,8 @@ Names:
 	Jun Kanoh        - Group 30 - Slackr
 
 	Nahom Tesfatsion - Group 30 - Slackr
+	
+	Michael Datcher  - Group 30 - Slackr
 
 
 
