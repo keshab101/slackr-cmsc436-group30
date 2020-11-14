@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "405766355831",
+    "firebase_url": "https://slackr-5d04d.firebaseio.com",
+    "project_id": "slackr-5d04d",
+    "storage_bucket": "slackr-5d04d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:405766355831:android:34ec853ef350e944cd3f72",
+        "android_client_info": {
+          "package_name": "com.example.slackr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "405766355831-5aq306er5cgdm4sjcbg42ifpeupvosj9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.slackr",
+            "certificate_hash": "8e235c7a058b93e3230c72e3f3208bd130c95db6"
+          }
+        },
+        {
+          "client_id": "405766355831-v6rq50do2jm5kpv0bo2c5lin65kjqff2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBtgKR8MGujoSeqkzzhu4BpMT1pQQaigio"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "405766355831-v6rq50do2jm5kpv0bo2c5lin65kjqff2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
