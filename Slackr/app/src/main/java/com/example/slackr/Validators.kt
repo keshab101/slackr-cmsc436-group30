@@ -1,6 +1,15 @@
 package com.example.slackr
 
 class Validators {
+
+    fun validUserName(name: String?) : Boolean {
+        if (name.isNullOrEmpty()) {
+            return false
+        }
+        val userRegex = Regex("^.{3,30}\$")
+        return userRegex.matches(name)
+    }
+
     fun validEmail(email: String?) : Boolean {
         if (email.isNullOrEmpty()) {
             return false

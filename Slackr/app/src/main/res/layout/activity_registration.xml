@@ -2,41 +2,79 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:gravity="center_vertical"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="16dp"
+    tools:context='.RegistrationActivity'
+    android:background="@color/splash_color">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/register_new_account" />
+        android:layout_gravity="center"
+        android:layout_marginTop="100dp"
+        android:fontFamily="sans-serif-light"
+        android:text="@string/register_new_account"
+        android:textSize="20sp"
+        android:textColor="@color/white" />
+
+    <EditText
+        android:id="@+id/name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="First and last name"
+        android:layout_marginTop="30dp"
+        android:background="@drawable/round_views"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"
+        />
+
 
     <EditText
         android:id="@+id/email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="@string/email"
         android:inputType="textEmailAddress"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:background="@drawable/round_views"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"/>
 
     <EditText
         android:id="@+id/password"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:hint="@string/password"
         android:inputType="textPassword"
-        android:importantForAutofill="no" />
+        android:importantForAutofill="no"
+        android:background="@drawable/round_views"
+        android:paddingTop="8dp"
+        android:paddingBottom="8dp"
+        android:paddingLeft="8dp"/>
 
     <Button
         android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:background="@drawable/round_views"
         android:text="@string/register" />
 
     <ProgressBar
+        android:theme="@style/ProgressBarStyle"
         android:id="@+id/progressBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:visibility="gone" />
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="40dp"
+        android:visibility="gone"/>
 
 </LinearLayout>
