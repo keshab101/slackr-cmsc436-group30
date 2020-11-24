@@ -56,7 +56,6 @@ class RegistrationActivity : AppCompatActivity() {
             Toast.makeText(applicationContext, "Please enter a name with at least 3 characters", Toast.LENGTH_LONG).show()
             return
         }
-
         if (!validator.validEmail(email)) {
             Toast.makeText(applicationContext, "Please enter a school email", Toast.LENGTH_LONG).show()
             return

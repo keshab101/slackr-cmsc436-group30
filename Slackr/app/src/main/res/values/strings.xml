@@ -30,4 +30,10 @@
 
     <string name="test_author">Ivo Andric</string>
     <string name="test_country">Kingdom of Yugoslavia</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_home_fragment">Hello blank home fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_search_fragment">Hello blank search fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_settings_fragment">Hello blank settings fragment</string>
 </resources>
