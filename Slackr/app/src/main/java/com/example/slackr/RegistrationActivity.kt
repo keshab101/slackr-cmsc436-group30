@@ -57,7 +57,6 @@ class RegistrationActivity : AppCompatActivity() {
             progressBar!!.visibility = View.GONE
             return
         }
-
         if (!validator.validEmail(email)) {
             Toast.makeText(applicationContext, "Please enter a school email", Toast.LENGTH_LONG).show()
             progressBar!!.visibility = View.GONE
