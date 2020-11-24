@@ -36,4 +36,6 @@
     <string name="hello_blank_search_fragment">Hello blank search fragment</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_settings_fragment">Hello blank settings fragment</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
