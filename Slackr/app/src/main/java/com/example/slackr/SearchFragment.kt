@@ -18,6 +18,8 @@ class SearchFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        // ADD MAP HERE??
+
 
 
     }
