@@ -29,6 +29,8 @@
         android:paddingTop="8dp"
         android:paddingBottom="8dp"
         android:paddingLeft="8dp"
+        android:importantForAutofill="no"
+        android:inputType="text"
         />
 
 

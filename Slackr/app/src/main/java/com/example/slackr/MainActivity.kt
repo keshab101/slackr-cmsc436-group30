@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.system.exitProcess
 
 class MainActivity: AppCompatActivity() {
 
@@ -25,5 +26,11 @@ class MainActivity: AppCompatActivity() {
             val intent = Intent(this@MainActivity, LoginActivity::class.java)
             startActivity(intent)
         }
+
     }
+    override fun onBackPressed() {
+        //Left empty so that users can't go back to the splash activity
+        //Must either login or register from here
+    }
+
 }

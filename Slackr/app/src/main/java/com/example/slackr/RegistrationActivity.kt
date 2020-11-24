@@ -54,14 +54,17 @@ class RegistrationActivity : AppCompatActivity() {
         //Write code to validate user
         if (!validator.validUserName(name)) {
             Toast.makeText(applicationContext, "Please enter a name with at least 3 characters", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
             return
         }
         if (!validator.validEmail(email)) {
             Toast.makeText(applicationContext, "Please enter a school email", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
             return
         }
         if (!validator.validPassword(password)) {
             Toast.makeText(applicationContext, "Please enter a valid password!", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
             return
         }
 
