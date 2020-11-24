@@ -49,10 +49,12 @@ class LoginActivity : AppCompatActivity() {
 
         if (TextUtils.isEmpty(email)) {
             Toast.makeText(applicationContext, "Please enter email...", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
             return
         }
         if (TextUtils.isEmpty(password)) {
             Toast.makeText(applicationContext, "Please enter password!", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
             return
         }
         mAuth!!.signInWithEmailAndPassword(email, password)
