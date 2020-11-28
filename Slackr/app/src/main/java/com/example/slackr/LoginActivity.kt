@@ -57,6 +57,8 @@ class LoginActivity : AppCompatActivity() {
             progressBar!!.visibility = View.GONE
             return
         }
+
+        
         mAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 progressBar?.visibility = View.GONE
