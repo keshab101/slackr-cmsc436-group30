@@ -3,6 +3,10 @@ package com.example.slackr
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
+import com.example.slackr.fragments.AddFragment
+import com.example.slackr.fragments.HomeFragment
+import com.example.slackr.fragments.SearchFragment
+import com.example.slackr.fragments.SettingsFragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class HomePage :AppCompatActivity() {
@@ -25,14 +29,27 @@ class HomePage :AppCompatActivity() {
 
         // Set the home page fragment to mFragmentHome
         setFragment(mHomeFragment!!)
+        supportActionBar?.title = "Dashboard"
 
         // Set on NavigationItemSelectedListener on mBottomNavigation
         mBottomNavigation!!.setOnNavigationItemSelectedListener {
             when(it.itemId){
-                R.id.home->setFragment(mHomeFragment!!)
-                R.id.add->setFragment(mAddFragment!!)
-                R.id.search->setFragment(mSearchFragment!!)
-                R.id.settings->setFragment(mSettingsFragment!!)
+                R.id.home-> {
+                    supportActionBar?.title = "Dashboard"
+                    setFragment(mHomeFragment!!)
+                }
+                R.id.add-> {
+                    supportActionBar?.title = "Add"
+                    setFragment(mAddFragment!!)
+                }
+                R.id.search-> {
+                    supportActionBar?.title = "Search"
+                    setFragment(mSearchFragment!!)
+                }
+                R.id.settings-> {
+                    supportActionBar?.title = "Profile"
+                    setFragment(mSettingsFragment!!)
+                }
             }
             true
         }
@@ -48,5 +65,9 @@ class HomePage :AppCompatActivity() {
     override fun onBackPressed() {
         // Disables the back button
         //Left empty so that users can't go back to the login activity
+    }
+
+    companion object {
+        const val USER_ID = "student_id"
     }
 }

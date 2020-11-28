@@ -81,8 +81,8 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        const val USER_EMAIL = "com.example.tesla.myhomelibrary.useremail"
-        const val USER_ID = "com.example.tesla.myhomelibrary.userid"
+        const val USER_EMAIL = "student_email"
+        const val USER_ID = "student_id"
     }
 
 }
