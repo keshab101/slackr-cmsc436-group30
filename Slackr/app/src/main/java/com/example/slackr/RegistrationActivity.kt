@@ -9,11 +9,15 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.slackr.fragments.Group
 import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.gson.Gson
 import java.util.*
+import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
 class RegistrationActivity : AppCompatActivity() {
@@ -24,9 +28,10 @@ class RegistrationActivity : AppCompatActivity() {
     private var regBtn: Button? = null
     private var progressBar: ProgressBar? = null
     private var validator = Validators()
-
     private var mAuth: FirebaseAuth? = null
     private var fStore: FirebaseFirestore? = null
+    private lateinit var firebaseRef: FirebaseDatabase
+    private lateinit var databaseRef: DatabaseReference
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,6 +39,8 @@ class RegistrationActivity : AppCompatActivity() {
 
         mAuth = FirebaseAuth.getInstance()
         fStore = FirebaseFirestore.getInstance()
+        firebaseRef = FirebaseDatabase.getInstance()
+        databaseRef = firebaseRef.getReference("users")
 
         userName = findViewById(R.id.name)
         emailTV = findViewById(R.id.email)
@@ -81,8 +88,17 @@ class RegistrationActivity : AppCompatActivity() {
 
                     //Create a Hashmap containing user's name and email
                     val userHash: HashMap<String, String> = HashMap()
-                    userHash["UserName"] = name
+                    userHash["userName"] = name
                     userHash["email"] = email
+
+                    //Create group for testing
+                    val userGroups: ArrayList<Group> = ArrayList()
+                    val group1 = Group("123", "CMSC436", 5)
+                    val group2 = Group("234", "CMSC420 Group", 2)
+                    val group3 = Group("234", "Slacker Group", 4)
+                    userGroups.add(group1)
+                    userGroups.add(group2)
+                    userGroups.add(group3)
 
                     //Put the Hashmap into the firebase
                     documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
@@ -90,6 +106,9 @@ class RegistrationActivity : AppCompatActivity() {
                             Log.d("User Hashmap", "user profile created for - $userID")
                         }
                     }
+                    //Storing the user's information in database
+                    databaseRef.child(userID).setValue(userHash)
+                    databaseRef.child(userID).child("groups").setValue(userGroups)
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)
