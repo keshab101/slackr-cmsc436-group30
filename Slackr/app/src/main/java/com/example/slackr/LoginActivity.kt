@@ -47,24 +47,25 @@ class LoginActivity : AppCompatActivity() {
         val email: String = userEmail?.text.toString()
         val password: String = userPassword?.text.toString()
 
-        if (TextUtils.isEmpty(email)) {
-            Toast.makeText(applicationContext, "Please enter email...", Toast.LENGTH_LONG).show()
-            progressBar!!.visibility = View.GONE
-            return
-        }
-        if (TextUtils.isEmpty(password)) {
-            Toast.makeText(applicationContext, "Please enter password!", Toast.LENGTH_LONG).show()
-            progressBar!!.visibility = View.GONE
-            return
-        }
 
-        
-        mAuth!!.signInWithEmailAndPassword(email, password)
+//        if (TextUtils.isEmpty(email)) {
+//            Toast.makeText(applicationContext, "Please enter email...", Toast.LENGTH_LONG).show()
+//            progressBar!!.visibility = View.GONE
+//            return
+//        }
+//        if (TextUtils.isEmpty(password)) {
+//            Toast.makeText(applicationContext, "Please enter password!", Toast.LENGTH_LONG).show()
+//            progressBar!!.visibility = View.GONE
+//            return
+//        }
+        val testingEmail = "keshab01@umd.edu"
+        val testingPassword = "cmsc436"
+        mAuth!!.signInWithEmailAndPassword(testingEmail, testingPassword)
+
+        //mAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 progressBar?.visibility = View.GONE
                 if(task.isSuccessful){
-                    Toast.makeText(applicationContext, "Login successful!", Toast.LENGTH_LONG)
-                        .show()
                     val intent = Intent(this@LoginActivity, HomePage::class.java)
                     intent.putExtra(USER_ID, mAuth!!.uid)
                     startActivity(intent)
