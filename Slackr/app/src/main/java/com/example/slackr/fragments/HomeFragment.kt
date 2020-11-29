@@ -12,6 +12,7 @@ import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
+import com.google.firebase.database.ktx.getValue
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception
@@ -25,8 +26,6 @@ class HomeFragment : Fragment() {
     private lateinit var user: FirebaseUser
     private lateinit var fireDatabase: FirebaseDatabase
     private lateinit var databaseReference: DatabaseReference
-    //private lateinit var fStore: FirebaseFirestore
-    //private lateinit var fStoreAuth: CollectionReference
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -34,25 +33,22 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         groupList = view.findViewById(R.id.group_list)
-        //viewButton = view.findViewById(R.id.group_view_button)
         groups = ArrayList()
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
         fireDatabase = FirebaseDatabase.getInstance()
         databaseReference = fireDatabase.getReference("users")
-        //fStore = FirebaseFirestore.getInstance()
-        //fStoreAuth = fStore.collection("users")
 
-        //Find the current user
-        //val q: Query = fStoreAuth
-        val query: Query = databaseReference.orderByChild("email").equalTo(user.email)
-        query.addValueEventListener(object: ValueEventListener {
+        databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-
                 var group: Group? = null
-                for (ds in snapshot.children) {
+                for (ds in snapshot.child(user.uid).child("groups").children) {
                     try {
                         group = ds.getValue(Group::class.java)
+
+                        Log.d(TAG, "====================================================================")
+                        Log.d(TAG, group.toString())
+                        Log.d(TAG, "====================================================================")
                     } catch (e: Exception) {
                         Log.e(TAG, e.toString())
                     } finally {

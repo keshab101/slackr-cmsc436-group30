@@ -14,7 +14,7 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val groupListItem = inflater.inflate(R.layout.group_list, null, false)
+        val groupListItem = inflater.inflate(R.layout.group_list, null, true)
 
         val groupName = groupListItem.findViewById<View>(R.id.group_name) as TextView
         val groupMembers = groupListItem.findViewById<View>(R.id.group_members) as TextView
