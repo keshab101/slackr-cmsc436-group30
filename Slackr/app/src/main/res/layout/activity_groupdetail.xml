@@ -6,41 +6,69 @@
     android:gravity="center_vertical"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context=".GroupDetailActivity"
-    >
+    tools:context=".GroupDetailActivity">
+
+    <TextView
+        android:id="@+id/group_name_string"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:text="Group Name: "
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/group_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/arima_madurai_black"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="SlackR"
         android:textColor="@color/black"
-        android:textSize="40sp"/>
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/group_members_string"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:text="Group Members: "
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/group_members"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/arima_madurai_black"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="SlackR"
         android:textColor="@color/black"
-        android:textSize="40sp"/>
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/group_id_string"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif-medium"
+        android:gravity="left"
+        android:text="Group ID: "
+        android:textColor="@color/black"
+        android:textSize="30sp" />
 
     <TextView
         android:id="@+id/group_id"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
-        android:fontFamily="@font/arima_madurai_black"
+        android:fontFamily="sans-serif-medium"
         android:gravity="center"
-        android:text="SlackR"
         android:textColor="@color/black"
-        android:textSize="40sp"/>
-
+        android:textSize="30sp" />
 
 </LinearLayout>
