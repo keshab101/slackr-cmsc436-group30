@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
 import android.widget.Button
 import android.widget.ListView
 import com.example.slackr.R
@@ -39,16 +40,20 @@ class HomeFragment : Fragment() {
         fireDatabase = FirebaseDatabase.getInstance()
         databaseReference = fireDatabase.getReference("users")
 
+        //viewButton = view.findViewById(R.id.group_view_button)
+        //viewButton.setOnClickListener()
+        groupList.onItemClickListener = AdapterView.OnItemClickListener { _, view, i, l ->
+            val group = groups[i]
+
+        }
+
         databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group? = null
                 for (ds in snapshot.child(user.uid).child("groups").children) {
                     try {
                         group = ds.getValue(Group::class.java)
-
-                        Log.d(TAG, "====================================================================")
                         Log.d(TAG, group.toString())
-                        Log.d(TAG, "====================================================================")
                     } catch (e: Exception) {
                         Log.e(TAG, e.toString())
                     } finally {

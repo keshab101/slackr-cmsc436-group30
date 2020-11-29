@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context="com.halo.profileui.Activity_Main">
+    android:layout_height="match_parent">
 
     <RelativeLayout
         android:id="@+id/rellay1"
@@ -74,11 +71,11 @@
 
 
 
-
     <RelativeLayout
+        android:id="@+id/bottom_relay1"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
+        android:layout_below="@id/rellay1"
         >
 
         <LinearLayout
@@ -87,7 +84,6 @@
             android:layout_centerInParent="true"
             android:layout_marginLeft="30dp"
             android:layout_marginRight="30dp"
-            android:layout_marginTop="20dp"
             android:orientation="vertical">
 
             <LinearLayout
@@ -202,6 +198,23 @@
                     android:layout_height="1dp"
                     android:layout_marginTop="15dp"
                     android:background="@color/grey" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/logout"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="80dp"
+                    android:background="@drawable/round_views"
+                    android:text="Sign Out" />
 
             </LinearLayout>
 
