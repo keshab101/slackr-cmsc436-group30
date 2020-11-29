@@ -29,7 +29,8 @@
                 android:background="@drawable/circle"
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/app_logo"
+                />
 
         </RelativeLayout>
 
@@ -58,15 +59,16 @@
             android:textColor="@color/black"
             android:textSize="14sp" />
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="15dp"
-            android:layout_marginTop="15dp"
-            android:adjustViewBounds="true"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_settings" />
+<!--        <ImageView-->
+<!--            android:layout_width="40dp"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_alignParentRight="true"-->
+<!--            android:layout_marginRight="15dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:adjustViewBounds="true"-->
+<!--            android:scaleType="centerInside"-->
+<!--            android:src="@drawable/ic_" -->
+<!--            />-->
 
     </RelativeLayout>
 
@@ -76,7 +78,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/linlay1">
+
+        >
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -161,7 +164,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-light"
-                    android:text="@string/twitterUsername"
+                    android:text="twitterUsername"
                     android:textColor="#000000"
                     android:textSize="18sp" />
 
