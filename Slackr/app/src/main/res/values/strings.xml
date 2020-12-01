@@ -27,6 +27,7 @@
     <string name="update">Update</string>
     <string name="front_description1">Learn and achieve more together.</string>
     <string name="front_description2">Create and find study groups!</string>
+    <string name="sign_out">Sign Out</string>
 
     <string name="test_group">CMSC436 Group</string>
     <string name="test_group_members">4 members</string>
