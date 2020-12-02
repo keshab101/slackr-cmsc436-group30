@@ -41,7 +41,7 @@ class HomeFragment : Fragment() {
         databaseReference = fireDatabase.getReference("users")
         Log.d(TAG, "user reference: $databaseReference")
 
-        databaseReference.addValueEventListener(object: ValueEventListener {
+        /*databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group? = null
                 for (ds in snapshot.child(user.uid).child("groups").children) {
@@ -79,7 +79,7 @@ class HomeFragment : Fragment() {
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })
+        })*/
 
         return view
     }
