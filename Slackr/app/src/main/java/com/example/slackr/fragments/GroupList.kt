@@ -9,7 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import com.example.slackr.R
-import com.example.slackr.GroupDetailActivity
+import com.example.slackr.GroupPostsActivity
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
     R.layout.group_list, groups) {
@@ -29,9 +29,8 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
         val groupButton = groupListItem.findViewById<View>(R.id.group_view_button) as Button
         groupButton.setOnClickListener {
 
-            val intent = Intent(context, GroupDetailActivity::class.java)
+            val intent = Intent(context, GroupPostsActivity::class.java)
             intent.putExtra("GroupName", group.groupName)
-            intent.putExtra("GroupMembers", group.groupMembers.toString())
             intent.putExtra("GroupID", group.groupId)
             context.startActivity(intent)
 

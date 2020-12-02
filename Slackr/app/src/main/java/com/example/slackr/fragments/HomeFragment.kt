@@ -21,7 +21,6 @@ import java.lang.Exception
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewButton: Button
     private lateinit var groupList: ListView
     private lateinit var groups: MutableList<Group>
     private lateinit var firebaseAuth: FirebaseAuth
@@ -40,21 +39,32 @@ class HomeFragment : Fragment() {
         user = firebaseAuth.currentUser!!
         fireDatabase = FirebaseDatabase.getInstance()
         databaseReference = fireDatabase.getReference("users")
-
-        //viewButton = view.findViewById(R.id.group_view_button)
-        //viewButton.setOnClickListener()
-        groupList.onItemClickListener = AdapterView.OnItemClickListener { _, view, i, l ->
-            val group = groups[i]
-
-        }
+        Log.d(TAG, "user reference: $databaseReference")
 
         databaseReference.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group? = null
                 for (ds in snapshot.child(user.uid).child("groups").children) {
                     try {
-                        group = ds.getValue(Group::class.java)
-                        Log.d(TAG, group.toString())
+                        // The id of the group that user is in
+                        val groupID = ds.value.toString()
+                        Log.d(TAG, "The value of ds is : $groupID")
+                        val groupRef = fireDatabase.getReference("groups").child(groupID)
+                        Log.d(TAG, "groupRef: $groupRef")
+
+                        //We are fine until here
+                        //code doesn't go in
+                        groupRef.addListenerForSingleValueEvent(object: ValueEventListener{
+                            override fun onDataChange(snapshot: DataSnapshot) {
+                                group = snapshot.getValue(Group::class.java)
+                                Log.d(TAG, "group : $group")
+                            }
+
+                            override fun onCancelled(error: DatabaseError) {
+                                TODO("Not yet implemented")
+                            }
+
+                        })
                     } catch (e: Exception) {
                         Log.e(TAG, e.toString())
                     } finally {

@@ -45,7 +45,7 @@
         android:textColor="@color/white"
         android:textSize="16sp"/>
     <Button
-        android:id="@+id/register"
+        android:id="@+id/login"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
@@ -53,17 +53,16 @@
         android:layout_marginEnd="16dp"
         android:textAllCaps="false"
         android:background="@drawable/round_views"
-        android:text="Sign up for a new account"/>
-
+        android:text="Already have an account? Sign in"/>
     <Button
-        android:id="@+id/login"
+        android:id="@+id/register"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="10dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         android:textAllCaps="false"
         android:background="@drawable/round_views"
-        android:text="Already have an account? Sign in"/>
+        android:text="Sign up for a new account"/>
 
 </LinearLayout>

@@ -1,24 +1,11 @@
 <resources>
     <string name="app_name">Slackr</string>
-    <array name="countries">
-        <item name="america">America</item>
-        <item name="france">France</item>
-        <item name="spain">Spain</item>
-        <item name="columbia">Columbia</item>
-        <item name="russia">Russia</item>
-    </array>
 
-    <string name="enter_name">Enter name</string>
-    <string name="enter_title_name">Enter title name</string>
-    <string name="enter_author_name">Enter author\'s name</string>
-    <string name="add_titles">Add Titles</string>
+    <!--ids For group posts -->
+    <string name="test_username">Keshab01</string>
+
     <string name="register_new_account">Register a new account</string>
     <string name="tap_to_view">Tap on an Author to add and view titles</string>
-    <string name="one">1</string>
-    <string name="add">Add</string>
-    <string name="authors">Authors</string>
-    <string name="account_login">Login to your account</string>
-    <string name="delete">Delete</string>
     <string name="email">School Email</string>
     <string name="login">Login</string>
     <string name="password">Password</string>
