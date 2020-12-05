@@ -1,6 +1,7 @@
 package com.example.slackr
 
 import android.text.format.DateFormat
+import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
@@ -23,13 +24,11 @@ internal class GroupPostAdapter(
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
 
         // Getting all the data of the post
-        val userId: String = mPosts[i].userId
         val userName: String = mPosts[i].userName
-        val userEmail: String = mPosts[i].userEmail
         val postTitle: String = mPosts[i].pTitle
         val postDesc: String = mPosts[i].pDesc
         val postTime: String = mPosts[i].pTime
-        val postId: String = mPosts[i].pId
+        Log.i("Slacker-App", " postTime: $postTime")
 
         // Handling time
         val calender = Calendar.getInstance(Locale.getDefault())
@@ -37,7 +36,6 @@ internal class GroupPostAdapter(
         val pTime = DateFormat.format("MM/dd/yyyy hh:mm", calender)
 
         // TODO - handle user image in a try catch block
-
         // Displaying the post data
         viewHolder.userName.text = userName
         viewHolder.postTitle.text = postTitle
@@ -58,7 +56,6 @@ internal class GroupPostAdapter(
         internal val postTitle: TextView = itemView.findViewById(R.id.group_post_title)
         internal val postDesc: TextView = itemView.findViewById(R.id.group_post_description)
         internal val postTime: TextView = itemView.findViewById(R.id.group_post_time)
-        //internal val userImg: TextView = itemView.findViewById(R.id.group_post_userImg)
 
         init {
             itemView.setOnClickListener(this)

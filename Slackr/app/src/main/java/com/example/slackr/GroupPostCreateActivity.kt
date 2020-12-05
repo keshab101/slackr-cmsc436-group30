@@ -36,7 +36,12 @@ class GroupPostCreateActivity: AppCompatActivity()  {
         progressBar = findViewById(R.id.create_post_progressBar)
         //Initialize database variables
         currentUser = FirebaseAuth.getInstance().currentUser!!
-        databaseRef = FirebaseDatabase.getInstance().getReference("groups")
+
+        //Get data from intent
+        val groupId = intent.getStringExtra("GroupID").toString()
+
+        databaseRef = FirebaseDatabase.getInstance()
+            .getReference("groups").child(groupId).child("posts")
 
         //Add an onclick listener to postButton
         postButton.setOnClickListener {
@@ -55,25 +60,28 @@ class GroupPostCreateActivity: AppCompatActivity()  {
 
         //Get the information relevant to the post
         val userId = currentUser.uid
-        val userName = intent.getStringExtra("userName").toString()
-        val userEmail = intent.getStringExtra("userEmail").toString()
-        val groupID = intent.getStringExtra("GroupID").toString()
+        val userName = intent.getStringExtra("userName")
+        val userEmail = intent.getStringExtra("userEmail")
         val pTitle = postTitle.text.toString() //maybe add .trim()
         val pDesc = postDesc.text.toString()
         val pTime = System.currentTimeMillis().toString()
 
         //Create a GroupPost and add it to the database
-        val post = GroupPost(pTime, pTitle, pDesc, pTime, userId, userName, userEmail)
-        databaseRef.child(groupID).child("posts").setValue(post)
-            .addOnCompleteListener {task ->
-                if(task.isSuccessful) {
-                    Toast.makeText(applicationContext, "Post Successfully Created", Toast.LENGTH_SHORT).show()
-                } else {
-                    Toast.makeText(applicationContext, "Failed to create the post", Toast.LENGTH_SHORT).show()
-                }
-                progressBar.visibility = View.GONE
-            }
+        val postId = databaseRef.push().key.toString()
+        val postHash: HashMap<Object, String> = HashMap()
+//        postHash["userName"] = userName.toString()
+//        postHash["email"] = email
+//        postHash["pDesc"] = pDesc
 
+        val post = GroupPost(postId, pTitle, pDesc, pTime, userId, userName!!, userEmail!!)
+        databaseRef.child(postId).setValue(post).addOnCompleteListener { task ->
+            if(task.isSuccessful) {
+                Toast.makeText(applicationContext, "Post Successfully Created", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(applicationContext, "Failed to create the post", Toast.LENGTH_SHORT).show()
+            }
+            progressBar.visibility = View.GONE
+        }
     }
 
 

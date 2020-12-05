@@ -2,6 +2,7 @@ package com.example.slackr
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -21,7 +22,7 @@ import com.google.firebase.database.ktx.getValue
 class GroupPostsActivity : AppCompatActivity() {
 
     private lateinit var groupPosts: MutableList<GroupPost>
-    private lateinit var groupID: String
+    private lateinit var groupId: String
     private lateinit var groupName: String
     private lateinit var databaseRef: DatabaseReference
     private lateinit var currentUser: FirebaseUser
@@ -40,32 +41,31 @@ class GroupPostsActivity : AppCompatActivity() {
 
         //Set up the adapter
         groupPosts = ArrayList()
-        groupID = intent.getStringExtra("GroupID").toString()
+        groupId = intent.getStringExtra("GroupId").toString()
         groupName = intent.getStringExtra("GroupName").toString()
         currentUser = FirebaseAuth.getInstance().currentUser!!
-        databaseRef = FirebaseDatabase.getInstance().getReference("groups")
+        databaseRef = FirebaseDatabase.getInstance().getReference("groups").child(groupId)
 
         //Set up action bar
         supportActionBar!!.title = groupName
         supportActionBar!!.setDisplayHomeAsUpEnabled(true)
         supportActionBar!!.setDisplayShowHomeEnabled(true)
 
-        //Add event listener to database
+        //Add event listener to reference to posts
         databaseRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                groupPosts.clear()
-                var post: GroupPost? = null
-                for (ds in snapshot.child(groupID).child("posts").children) {
+                var post: GroupPost?
+                for (ds in snapshot.child("posts").children) {
                     post = ds.getValue(GroupPost::class.java)
+                    //Log.i("Slacker-App", " postTime: ${ds.child(ptime)}")
                     groupPosts.add(post!!)
                 }
+                mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(applicationContext, "There was an error while accessing the group", Toast.LENGTH_LONG).show()
             }
         })
-        mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
     }
 
     //When the menu options is clicked
@@ -80,27 +80,29 @@ class GroupPostsActivity : AppCompatActivity() {
             Menu.FIRST -> {
 
                 //Get users database to extract user's email and username
-                val usersDB = FirebaseDatabase.getInstance().getReference("users")
+                val usersDB = FirebaseDatabase.getInstance().getReference("users").child(currentUser.uid)
+                Log.d(TAG, "usersDB: $usersDB")
                 var userEmail: String? = null
                 var userName: String? = null
 
                 usersDB.addValueEventListener(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
-                        for (ds in snapshot.child(currentUser.uid).children) {
-                            userEmail = ds.child("email").value as String?
-                            userName = ds.child("userName").value as String?
-                        }
+                        userEmail = snapshot.child("email").value.toString()
+                        userName = snapshot.child("userName").value.toString()
+//                        Log.i(TAG, "userName: $userName")
+//                        Log.i(TAG, "Email: $userEmail")
                     }
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
-
                 })
+                Log.i(TAG, "userName: $userName")
+                Log.i(TAG, "Email: $userEmail")
 
                 //Create an intent and launch it with some post information
                 val intent = Intent(applicationContext, GroupPostCreateActivity::class.java)
                 intent.putExtra("GroupName", groupName)
-                intent.putExtra("GroupID", groupID)
+                intent.putExtra("GroupID", groupId)
                 intent.putExtra("userEmail", userEmail)
                 intent.putExtra("userName", userName)
                 startActivity(intent)
@@ -114,6 +116,10 @@ class GroupPostsActivity : AppCompatActivity() {
     override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return super.onSupportNavigateUp()
+    }
+
+    companion object {
+        const val TAG = "Slacker-App"
     }
 
 }

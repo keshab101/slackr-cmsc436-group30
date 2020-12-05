@@ -3,6 +3,7 @@ package com.example.slackr.fragments
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
+import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
@@ -23,23 +24,25 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
         val groupMembers = groupListItem.findViewById<View>(R.id.group_members) as TextView
 
         val group = groups[position]
-        groupName.text = group.groupName
-        groupMembers.text = group.groupMembers.toString() + " members"
+        val name = group.groupName
+        val id = group.groupId
+        val members = group.groupMembers
+        groupName.text = name
+        groupMembers.text = ("$members members")
 
         val groupButton = groupListItem.findViewById<View>(R.id.group_view_button) as Button
         groupButton.setOnClickListener {
 
             val intent = Intent(context, GroupPostsActivity::class.java)
-            intent.putExtra("GroupName", group.groupName)
-            intent.putExtra("GroupID", group.groupId)
+            intent.putExtra("GroupName", name)
+            intent.putExtra("GroupId", id)
             context.startActivity(intent)
-
         }
-
         return groupListItem
     }
 
     override fun getItem(position: Int): Group {
         return groups[position]
     }
+
 }

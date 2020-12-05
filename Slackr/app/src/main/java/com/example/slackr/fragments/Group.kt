@@ -1,7 +1,5 @@
 package com.example.slackr.fragments
 
-import android.provider.ContactsContract
-import com.example.slackr.GroupPost
 import com.google.firebase.database.DatabaseReference
 
 
@@ -17,25 +15,27 @@ class Group {
 
     var groupId: String = ""
     var groupName: String = ""
-    var groupMembers: Int = 0
-    var memberIDS: DatabaseReference? = null
-    var posts: DatabaseReference? = null
+    var groupMembers: String = ""
 
     //Might add user pic later
 
-    constructor(groupId: String, groupName: String, groupMembers: Int) {
+    constructor(groupId: String, groupName: String, groupMembers: String) {
         this.groupId = groupId
         this.groupName = groupName
         this.groupMembers = groupMembers
     }
 
-    constructor(groupId: String, groupName: String, groupMembers: Int,
-                memberIDS: DatabaseReference, posts: DatabaseReference){
-        this.groupId = groupId
-        this.groupName = groupName
-        this.groupMembers = groupMembers
-        this.memberIDS = memberIDS
-        this.posts = posts
+//    constructor(groupId: String, groupName: String, groupMembers: String,
+//                memberIDS: DatabaseReference, posts: DatabaseReference){
+//        this.groupId = groupId
+//        this.groupName = groupName
+//        this.groupMembers = groupMembers
+//        this.memberIDS = memberIDS
+//        this.posts = posts
+//    }
+
+    override fun toString(): String {
+        return "GroupId: $groupId, Groupname: $groupName, GroupMembers: $groupMembers"
     }
 
 }

@@ -96,9 +96,9 @@ class RegistrationActivity : AppCompatActivity() {
                     val pTime = System.currentTimeMillis().toString()
                     val post = GroupPost(pTime, pTitle, pDesc, pTime, userId, name, email)
 
-                    val group1 = Group("123", "CMSC436", 5)
-                    val group2 = Group("234", "CMSC420 Group", 2)
-                    val group3 = Group("234", "Slacker Group", 4)
+                    val group1 = Group("123", "CMSC436", "5")
+                    val group2 = Group("234", "CMSC420 Group", "2")
+                    val group3 = Group("234", "Slacker Group", "4")
 
                     //Put the Hashmap into the firebase
                     documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
@@ -116,7 +116,8 @@ class RegistrationActivity : AppCompatActivity() {
 
                     val memberArray = ArrayList<String>()
                     memberArray.add(userID)
-                    groupDB.child(id).child("members").push().setValue(memberArray)
+                    //groupDB.child(id).child("members").push().setValue(memberArray)
+                    groupDB.child(id).child("members").child(userID).setValue(userID)
 
                     val userExampleGroup = ArrayList<String>()
                     userExampleGroup.add(id)
