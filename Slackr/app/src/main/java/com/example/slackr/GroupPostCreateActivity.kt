@@ -74,7 +74,7 @@ class GroupPostCreateActivity: AppCompatActivity()  {
         postHash["userId"] = userId
         postHash["pDesc"] = pDesc
         postHash["pTitle"] = pTitle
-        postHash["pTIme"] = pTime
+        postHash["pTime"] = pTime
         postHash["pId"] = postId
 
 //        val post = GroupPost(postId, pTitle, pDesc, pTime, userId, userName!!, userEmail!!)
