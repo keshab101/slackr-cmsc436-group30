@@ -60,21 +60,25 @@ class GroupPostCreateActivity: AppCompatActivity()  {
 
         //Get the information relevant to the post
         val userId = currentUser.uid
-        val userName = intent.getStringExtra("userName")
-        val userEmail = intent.getStringExtra("userEmail")
+        val userName = intent.getStringExtra("userName").toString()
+        val userEmail = intent.getStringExtra("userEmail").toString()
         val pTitle = postTitle.text.toString() //maybe add .trim()
         val pDesc = postDesc.text.toString()
         val pTime = System.currentTimeMillis().toString()
 
         //Create a GroupPost and add it to the database
         val postId = databaseRef.push().key.toString()
-        val postHash: HashMap<Object, String> = HashMap()
-//        postHash["userName"] = userName.toString()
-//        postHash["email"] = email
-//        postHash["pDesc"] = pDesc
+        val postHash: HashMap<String, String> = HashMap()
+        postHash["userName"] = userName
+        postHash["userEmail"] = userEmail
+        postHash["userId"] = userId
+        postHash["pDesc"] = pDesc
+        postHash["pTitle"] = pTitle
+        postHash["pTIme"] = pTime
+        postHash["pId"] = postId
 
-        val post = GroupPost(postId, pTitle, pDesc, pTime, userId, userName!!, userEmail!!)
-        databaseRef.child(postId).setValue(post).addOnCompleteListener { task ->
+//        val post = GroupPost(postId, pTitle, pDesc, pTime, userId, userName!!, userEmail!!)
+        databaseRef.child(postId).setValue(postHash).addOnCompleteListener { task ->
             if(task.isSuccessful) {
                 Toast.makeText(applicationContext, "Post Successfully Created", Toast.LENGTH_SHORT).show()
             } else {

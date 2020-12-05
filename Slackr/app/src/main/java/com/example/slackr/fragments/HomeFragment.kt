@@ -34,12 +34,9 @@ class HomeFragment : Fragment() {
         user = firebaseAuth.currentUser!!
         fireDatabase = FirebaseDatabase.getInstance()
 
-<<<<<<< HEAD
+
         val groupDatabase = fireDatabase.getReference("groups")
-        groupDatabase.addValueEventListener(object: ValueEventListener{
-=======
-        databaseReference.addValueEventListener(object: ValueEventListener {
->>>>>>> e6c5af236ab7d454c1def14bf37525e67024410f
+        groupDatabase.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group
                 var name: String
