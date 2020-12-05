@@ -6,11 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter;
-import android.widget.AutoCompleteTextView;
-import android.widget.Button
-import android.widget.EditText
+import android.widget.*
 import com.example.slackr.R
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 
 class AddFragment : Fragment() {
@@ -22,6 +23,8 @@ class AddFragment : Fragment() {
     private var subjects: Array<String>? = null
     private var adapter: ArrayAdapter<String>? = null
     private var buttonCreateGroup: Button? = null
+    private var currentUser: FirebaseUser? = null
+    private var databaseRef: DatabaseReference? = null
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -55,12 +58,41 @@ class AddFragment : Fragment() {
     // Get called when the button is clicked
     private fun createGroup() {
 
-        // Clear out text fields after creating a group
-        groupName!!.text.clear()
-        meetingLocation!!.text.clear()
-        description!!.text.clear()
-        subject!!.text.clear()
+        // Get the information needed to create a group
+        currentUser = FirebaseAuth.getInstance().currentUser
+        val userId = currentUser!!.uid
+        val groupNameStr = groupName!!.text.toString()
+        val meetingLocationStr = meetingLocation!!.text.toString()
+        val descriptionStr = description!!.text.toString()
+        val subjectStr = subject!!.text.toString()
+        val groupMemberCount = "1"
 
+        // Get the group ID
+        databaseRef = FirebaseDatabase.getInstance().getReference("groups")
+        val groupId = databaseRef!!.push().key.toString()
+
+        Log.i(TAG, "groupNameStr: $groupNameStr")
+        Log.i(TAG, "groupId: $groupId")
+        Log.i(TAG, "groupMemberCount: $groupMemberCount")
+
+        // Create a Group and store it into the database
+        val newGroup = Group(groupId, groupNameStr, groupMemberCount)
+        databaseRef!!.child(groupId).setValue(newGroup).addOnCompleteListener { task ->
+            if(task.isSuccessful) {
+
+                // Clear out text fields after creating a group
+                groupName!!.text.clear()
+                meetingLocation!!.text.clear()
+                description!!.text.clear()
+                subject!!.text.clear()
+
+                Log.i(TAG, "////////////////////Group was made////////////////////////")
+
+                Toast.makeText(context, "Group Successfully Created", Toast.LENGTH_SHORT).show()
+            } else {
+                Toast.makeText(context, "Failed to create the group", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
 
