@@ -66,6 +66,7 @@ class AddFragment : Fragment() {
         val descriptionStr = description!!.text.toString()
         val subjectStr = subject!!.text.toString()
         val groupMemberCount = "1"
+        val memberHash = HashMap<String, String>()
 
         // Get the group ID
         databaseRef = FirebaseDatabase.getInstance().getReference("groups")
@@ -79,6 +80,10 @@ class AddFragment : Fragment() {
         val newGroup = Group(groupId, groupNameStr, groupMemberCount)
         databaseRef!!.child(groupId).setValue(newGroup).addOnCompleteListener { task ->
             if(task.isSuccessful) {
+
+                // Add members using a hash
+                memberHash[userId] = userId
+                databaseRef!!.child(groupId).child("members").setValue(memberHash)
 
                 // Clear out text fields after creating a group
                 groupName!!.text.clear()
