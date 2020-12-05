@@ -42,6 +42,7 @@ class HomeFragment : Fragment() {
                 var name: String
                 var groupId: String
                 var members: String
+                groups.clear()
                 for (ds in snapshot.children) {
                     if (ds.child("members").child(user.uid).exists()){
                         name = ds.child("groupName").value.toString()

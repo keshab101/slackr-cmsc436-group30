@@ -1,6 +1,7 @@
 package com.example.slackr
 
 import android.content.Intent
+import android.icu.lang.UCharacter
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -11,6 +12,7 @@ import android.widget.ListView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.slackr.fragments.Group
@@ -33,6 +35,8 @@ class GroupPostsActivity : AppCompatActivity() {
 
         //Set up RecyclerView
         val mRecyclerView = findViewById<RecyclerView>(R.id.group_posts_list)
+        val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
+        mRecyclerView.addItemDecoration(dividerItemDecoration)
 
         //Set the layout manager
         mRecyclerView.layoutManager = LinearLayoutManager(this)
@@ -55,12 +59,14 @@ class GroupPostsActivity : AppCompatActivity() {
         databaseRef.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var post: GroupPost?
+                groupPosts.clear()
                 for (ds in snapshot.child("posts").children) {
                     post = ds.getValue(GroupPost::class.java)
-                    //Log.i("Slacker-App", " postTime: ${ds.child(ptime)}")
                     groupPosts.add(post!!)
+                    val adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
+                    Log.i("Slacker-App", " post: $adapter")
+                    mRecyclerView.adapter = adapter
                 }
-                mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
             }
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(applicationContext, "There was an error while accessing the group", Toast.LENGTH_LONG).show()
@@ -75,29 +81,24 @@ class GroupPostsActivity : AppCompatActivity() {
         return true
     }
 
+    var userEmail: String? = null
+    var userName: String? = null
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             Menu.FIRST -> {
 
                 //Get users database to extract user's email and username
                 val usersDB = FirebaseDatabase.getInstance().getReference("users").child(currentUser.uid)
-                Log.d(TAG, "usersDB: $usersDB")
-                var userEmail: String? = null
-                var userName: String? = null
-
                 usersDB.addValueEventListener(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
+                        Log.d(TAG, "snapshot: $snapshot")
                         userEmail = snapshot.child("email").value.toString()
                         userName = snapshot.child("userName").value.toString()
-//                        Log.i(TAG, "userName: $userName")
-//                        Log.i(TAG, "Email: $userEmail")
                     }
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
-                Log.i(TAG, "userName: $userName")
-                Log.i(TAG, "Email: $userEmail")
 
                 //Create an intent and launch it with some post information
                 val intent = Intent(applicationContext, GroupPostCreateActivity::class.java)

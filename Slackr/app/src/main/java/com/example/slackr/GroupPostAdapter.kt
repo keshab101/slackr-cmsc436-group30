@@ -12,23 +12,21 @@ import java.util.*
 internal class GroupPostAdapter(
     private val mPosts: List<GroupPost>,
     private val mRowLayout: Int
-) : RecyclerView.Adapter<GroupPostAdapter.ViewHolder>() {
+): RecyclerView.Adapter<GroupPostAdapter.ViewHolder>() {
 
     // Create ViewHolder which holds a View to be displayed
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(mRowLayout, viewGroup, false)
+        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.single_group_post, viewGroup, false)
         return ViewHolder(v)
     }
 
     // Binding: The process of preparing a child view to display data corresponding to a position within the adapter.
     override fun onBindViewHolder(viewHolder: ViewHolder, i: Int) {
-
         // Getting all the data of the post
         val userName: String = mPosts[i].userName
         val postTitle: String = mPosts[i].pTitle
         val postDesc: String = mPosts[i].pDesc
         val postTime: String = mPosts[i].pTime
-        Log.i("Slacker-App", " postTime: $postTime")
 
         // Handling time
         val calender = Calendar.getInstance(Locale.getDefault())
@@ -56,10 +54,6 @@ internal class GroupPostAdapter(
         internal val postTitle: TextView = itemView.findViewById(R.id.group_post_title)
         internal val postDesc: TextView = itemView.findViewById(R.id.group_post_description)
         internal val postTime: TextView = itemView.findViewById(R.id.group_post_time)
-
-        init {
-            itemView.setOnClickListener(this)
-        }
 
         override fun onClick(view: View) {
             // Display a Toast message indicting the selected item
