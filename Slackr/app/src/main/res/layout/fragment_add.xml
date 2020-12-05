@@ -5,10 +5,8 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:padding="16dp">
 
-
-
     <EditText
-        android:id="@+id/create_group_name"
+        android:id="@+id/group_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
@@ -38,9 +36,6 @@ android:padding="16dp">
         android:hint="Description"
         android:textSize="20sp" />
 
-
-
-
     <AutoCompleteTextView
         android:id="@+id/group_subject"
         android:layout_width="match_parent"
@@ -48,8 +43,8 @@ android:padding="16dp">
         android:completionHint="Select a subject"
         android:completionThreshold="1"
         android:dropDownAnchor="@id/text_view_subjects"
-        android:hint="Select a subject"
-        />
+        android:hint="Select a subject" />
+
     <TextView
         android:id="@+id/text_view_subjects"
         android:layout_width="match_parent"
@@ -59,7 +54,7 @@ android:padding="16dp">
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/create_group_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
@@ -67,4 +62,5 @@ android:padding="16dp">
         android:layout_marginTop="100dp"
         android:background="@drawable/round_views"
         android:text="Create Group" />
+
 </LinearLayout>
