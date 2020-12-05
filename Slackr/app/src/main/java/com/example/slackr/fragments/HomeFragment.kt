@@ -1,33 +1,27 @@
 package com.example.slackr.fragments
 
+import android.app.Activity
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
-import android.widget.Button
 import android.widget.ListView
+import android.widget.Toast
 import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
-import com.google.firebase.firestore.CollectionReference
-import com.google.firebase.firestore.FirebaseFirestore
 import java.lang.Exception
 
 class HomeFragment : Fragment() {
 
-    private lateinit var viewButton: Button
     private lateinit var groupList: ListView
     private lateinit var groups: MutableList<Group>
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var user: FirebaseUser
     private lateinit var fireDatabase: FirebaseDatabase
-    private lateinit var databaseReference: DatabaseReference
 
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
@@ -39,37 +33,32 @@ class HomeFragment : Fragment() {
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
         fireDatabase = FirebaseDatabase.getInstance()
-        databaseReference = fireDatabase.getReference("users")
 
-        //viewButton = view.findViewById(R.id.group_view_button)
-        //viewButton.setOnClickListener()
-        groupList.onItemClickListener = AdapterView.OnItemClickListener { _, view, i, l ->
-            val group = groups[i]
 
-        }
-
-        /*databaseReference.addValueEventListener(object: ValueEventListener {
+        val groupDatabase = fireDatabase.getReference("groups")
+        groupDatabase.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                var group: Group? = null
-                for (ds in snapshot.child(user.uid).child("groups").children) {
-                    try {
-                        group = ds.getValue(Group::class.java)
-                        Log.d(TAG, group.toString())
-                    } catch (e: Exception) {
-                        Log.e(TAG, e.toString())
-                    } finally {
-                        groups.add(group!!)
+                var group: Group
+                var name: String
+                var groupId: String
+                var members: String
+                groups.clear()
+                for (ds in snapshot.children) {
+                    if (ds.child("members").child(user.uid).exists()){
+                        name = ds.child("groupName").value.toString()
+                        groupId = ds.child("groupId").value.toString()
+                        members = ds.child("groupMembers").value.toString()
+                        group = Group(groupId, name, members)
+                        groups.add(group)
                     }
                 }
                 val groupAdapter = this@HomeFragment.activity?.let { GroupList(it, groups) }
                 groupList.adapter = groupAdapter
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }
-        })*/
+        })
 
         return view
     }

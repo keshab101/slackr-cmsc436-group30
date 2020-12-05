@@ -10,13 +10,10 @@ import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.example.slackr.fragments.Group
-import com.google.android.gms.tasks.OnSuccessListener
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.gson.Gson
-import java.util.*
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
@@ -90,15 +87,18 @@ class RegistrationActivity : AppCompatActivity() {
                     val userHash: HashMap<String, String> = HashMap()
                     userHash["userName"] = name
                     userHash["email"] = email
+                    //userHash["uid"] = userID.toString()
 
-                    //Create group for testing
-                    val userGroups: ArrayList<Group> = ArrayList()
-                    val group1 = Group("123", "CMSC436", 5)
-                    val group2 = Group("234", "CMSC420 Group", 2)
-                    val group3 = Group("234", "Slacker Group", 4)
-                    userGroups.add(group1)
-                    userGroups.add(group2)
-                    userGroups.add(group3)
+                    //Create a post
+                    val userId = userID.toString()
+                    val pTitle = "Testing post title 1"
+                    val pDesc = "Testing post description 1"
+                    val pTime = System.currentTimeMillis().toString()
+                    val post = GroupPost(pTime, pTitle, pDesc, pTime, userId, name, email)
+
+                    val group1 = Group("123", "CMSC436", "5")
+                    val group2 = Group("234", "CMSC420 Group", "2")
+                    val group3 = Group("234", "Slacker Group", "4")
 
                     //Put the Hashmap into the firebase
                     documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
@@ -108,7 +108,23 @@ class RegistrationActivity : AppCompatActivity() {
                     }
                     //Storing the user's information in database
                     databaseRef.child(userID).setValue(userHash)
-                    databaseRef.child(userID).child("groups").setValue(userGroups)
+
+                    val groupDB = FirebaseDatabase.getInstance().getReference("groups")
+                    val id = (groupDB.push()).key.toString()
+                    groupDB.child(id).setValue(group1)
+                    groupDB.child(id).child("posts").push().setValue(post)
+
+                    val memberArray = ArrayList<String>()
+                    memberArray.add(userID)
+                    //groupDB.child(id).child("members").push().setValue(memberArray)
+                    groupDB.child(id).child("members").child(userID).setValue(userID)
+
+                    val userExampleGroup = ArrayList<String>()
+                    userExampleGroup.add(id)
+                    databaseRef.child(userID).child("groups").setValue(userExampleGroup)
+
+                    groupDB.push().setValue(group2)
+                    groupDB.push().setValue(group3)
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)

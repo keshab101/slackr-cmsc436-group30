@@ -9,12 +9,9 @@
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name=".GroupDetailActivity"
-            android:label="@string/title_activity_test2"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,10 +19,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!--adding activities in order-->
+        <activity android:name=".MainActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomePage" />
-        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".GroupPostsActivity" />
+        <activity android:name=".GroupPostCreateActivity" />
 
         <meta-data
             android:name="preloaded_fonts"
