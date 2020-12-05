@@ -1,14 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".fragments.AddFragment">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:layout_width="match_parent"
+android:layout_height="match_parent"
+android:orientation="vertical"
+android:padding="16dp">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+
+    <EditText
+        android:id="@+id/create_group_name"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Group Name"
+        android:textSize="20sp" />
 
-</FrameLayout>
+    <EditText
+        android:id="@+id/group_location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Meeting Location"
+        android:textSize="20sp" />
+
+<!--    <androidx.appcompat.widget.AppCompatRadioButton-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="match_parent"/>-->
+
+    <EditText
+        android:id="@+id/group_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Description"
+        android:textSize="20sp" />
+
+
+
+
+    <AutoCompleteTextView
+        android:id="@+id/group_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:completionHint="Select a subject"
+        android:completionThreshold="1"
+        android:dropDownAnchor="@id/text_view_subjects"
+        android:hint="Select a subject"
+        />
+    <TextView
+        android:id="@+id/text_view_subjects"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:text="Subject"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/logout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginTop="100dp"
+        android:background="@drawable/round_views"
+        android:text="Create Group" />
+</LinearLayout>
