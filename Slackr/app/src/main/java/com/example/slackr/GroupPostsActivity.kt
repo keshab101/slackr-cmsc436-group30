@@ -65,9 +65,7 @@ class GroupPostsActivity : AppCompatActivity() {
                 for (ds in snapshot.child("posts").children) {
                     post = ds.getValue(GroupPost::class.java)
                     groupPosts.add(post!!)
-                    val adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
-                    Log.i("Slacker-App", " post: $adapter")
-                    mRecyclerView.adapter = adapter
+                    mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -83,23 +81,13 @@ class GroupPostsActivity : AppCompatActivity() {
         return true
     }
 
-    var userEmail: String? = null
-    var userName: String? = null
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when (item.itemId) {
             Menu.FIRST -> {
 
                 // Get users database to extract user's email and username
                 val usersDB = FirebaseDatabase.getInstance().getReference("users").child(currentUser.uid)
-<<<<<<< HEAD
-                usersDB.addValueEventListener(object: ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        Log.d(TAG, "snapshot: $snapshot")
-                        userEmail = snapshot.child("email").value.toString()
-                        userName = snapshot.child("userName").value.toString()
-=======
-                Log.d(TAG, "usersDB: $usersDB")
-
                 usersDB.addListenerForSingleValueEvent(object: ValueEventListener {
                     override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -114,24 +102,11 @@ class GroupPostsActivity : AppCompatActivity() {
                         intent.putExtra("userEmail", userEmail)
                         intent.putExtra("userName", userName)
                         startActivity(intent)
->>>>>>> 191b39290dbb75ac860c3572363d19e305bd4d88
                     }
-
                     override fun onCancelled(error: DatabaseError) {
                         TODO("Not yet implemented")
                     }
                 })
-<<<<<<< HEAD
-
-                //Create an intent and launch it with some post information
-                val intent = Intent(applicationContext, GroupPostCreateActivity::class.java)
-                intent.putExtra("GroupName", groupName)
-                intent.putExtra("GroupID", groupId)
-                intent.putExtra("userEmail", userEmail)
-                intent.putExtra("userName", userName)
-                startActivity(intent)
-=======
->>>>>>> 191b39290dbb75ac860c3572363d19e305bd4d88
                 true
             }
             else -> false

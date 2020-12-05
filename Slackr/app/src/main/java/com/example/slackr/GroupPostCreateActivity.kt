@@ -80,6 +80,8 @@ class GroupPostCreateActivity: AppCompatActivity()  {
 //        val post = GroupPost(postId, pTitle, pDesc, pTime, userId, userName!!, userEmail!!)
         databaseRef.child(postId).setValue(postHash).addOnCompleteListener { task ->
             if(task.isSuccessful) {
+                postTitle.text.clear()
+                postDesc.text.clear()
                 Toast.makeText(applicationContext, "Post Successfully Created", Toast.LENGTH_SHORT).show()
             } else {
                 Toast.makeText(applicationContext, "Failed to create the post", Toast.LENGTH_SHORT).show()
