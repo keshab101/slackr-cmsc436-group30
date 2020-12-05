@@ -76,14 +76,16 @@ class AddFragment : Fragment() {
         Log.i(TAG, "groupId: $groupId")
         Log.i(TAG, "groupMemberCount: $groupMemberCount")
 
-        // Create a Group and store it into the database
-        val newGroup = Group(groupId, groupNameStr, groupMemberCount)
+        // Add members using a hash map
+        memberHash[userId] = userId
+
+        // Create a Group object
+        val newGroup = Group(groupId, groupNameStr, groupMemberCount, memberHash,
+                             meetingLocationStr, descriptionStr, subjectStr)
+
+        // Store the group into the database
         databaseRef!!.child(groupId).setValue(newGroup).addOnCompleteListener { task ->
             if(task.isSuccessful) {
-
-                // Add members using a hash
-                memberHash[userId] = userId
-                databaseRef!!.child(groupId).child("members").setValue(memberHash)
 
                 // Clear out text fields after creating a group
                 groupName!!.text.clear()
