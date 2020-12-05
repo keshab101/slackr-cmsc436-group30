@@ -72,10 +72,6 @@ class AddFragment : Fragment() {
         databaseRef = FirebaseDatabase.getInstance().getReference("groups")
         val groupId = databaseRef!!.push().key.toString()
 
-        Log.i(TAG, "groupNameStr: $groupNameStr")
-        Log.i(TAG, "groupId: $groupId")
-        Log.i(TAG, "groupMemberCount: $groupMemberCount")
-
         // Add members using a hash map
         memberHash[userId] = userId
 
@@ -92,8 +88,6 @@ class AddFragment : Fragment() {
                 meetingLocation!!.text.clear()
                 description!!.text.clear()
                 subject!!.text.clear()
-
-                Log.i(TAG, "////////////////////Group was made////////////////////////")
 
                 Toast.makeText(context, "Group Successfully Created", Toast.LENGTH_SHORT).show()
             } else {

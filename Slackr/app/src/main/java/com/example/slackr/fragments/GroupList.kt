@@ -11,6 +11,7 @@ import android.widget.Button
 import android.widget.TextView
 import com.example.slackr.R
 import com.example.slackr.GroupPostsActivity
+import com.example.slackr.GroupViewActivity
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
     R.layout.group_list, groups) {
@@ -26,23 +27,45 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
         val group = groups[position]
         val name = group.groupName
         val id = group.groupId
-        val members = group.groupMembers
+        val description = group.groupDescription
+        val location = group.groupLocation
+        val subject = group.groupSubject
+        val membersCount = group.groupMembers
         groupName.text = name
-        groupMembers.text = ("$members members")
+        groupMembers.text = ("$membersCount members")
 
-        val groupButton = groupListItem.findViewById<View>(R.id.group_view_button) as Button
-        groupButton.setOnClickListener {
+        val postButton = groupListItem.findViewById<View>(R.id.group_post_button) as Button
+        postButton.setOnClickListener {
 
-            val intent = Intent(context, GroupPostsActivity::class.java)
-            intent.putExtra("GroupName", name)
-            intent.putExtra("GroupId", id)
-            context.startActivity(intent)
+            val postIntent = Intent(context, GroupPostsActivity::class.java)
+            postIntent.putExtra("GroupName", name)
+            postIntent.putExtra("GroupId", id)
+            context.startActivity(postIntent)
         }
+
+        val viewButton = groupListItem.findViewById<View>(R.id.group_view_button) as Button
+        viewButton.setOnClickListener {
+
+            val viewIntent = Intent(context, GroupViewActivity::class.java)
+            viewIntent.putExtra("GroupName", name)
+            viewIntent.putExtra("GroupId", id)
+            viewIntent.putExtra("GroupDescription", description)
+            viewIntent.putExtra("GroupLocation", location)
+            viewIntent.putExtra("GroupSubject", subject)
+            viewIntent.putExtra("GroupMembersCount", membersCount)
+
+            context.startActivity(viewIntent)
+        }
+
         return groupListItem
     }
 
     override fun getItem(position: Int): Group {
         return groups[position]
+    }
+
+    companion object {
+        const val TAG = "Slacker-App"
     }
 
 }

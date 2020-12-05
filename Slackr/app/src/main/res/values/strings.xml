@@ -56,27 +56,29 @@
         <item>Speech</item>
         <item>Writing or Composition</item>
 
-<!--       Science -->
-        <item>Biology</item> (typically has advanced classes)
-        <item>Chemistry</item> (typically has advanced classes)
+        <!--       Science -->
+        <item>Biology</item>
+        (typically has advanced classes)
+        <item>Chemistry</item>
+        (typically has advanced classes)
         <item>Earth or Space Sciences</item>
         <item>Physics</item>
 
-<!--        Social Studies-->
+        <!--        Social Studies-->
         <item>Economics</item>
         <item>Geography</item>
         <item>U.S. Government</item>
         <item>U.S. History</item>
         <item>World History</item>
 
-<!--        Foreign Languages -->
+        <!--        Foreign Languages -->
         <item>French</item>
         <item>German</item>
         <item>Spanish</item>
         <item></item>
         <item></item>
 
-<!--        Other School Classes -->
+        <!--        Other School Classes -->
         <item>Arts</item>
         <item>music</item>
         <item>photography</item>
@@ -88,7 +90,7 @@
         <item>Psychology</item>
         <item></item>
 
-<!--        Computer Science -->
+        <!--        Computer Science -->
         <item>Artificial Intelligence</item>
         <item>Algorithms</item>
         <item>Databases</item>
@@ -103,11 +105,11 @@
         <item>Cryptology</item>
         <item>Hand Held Programming Devices</item>
 
-<!--        <item></item>-->
-<!--        <item></item>-->
-<!--        <item></item>-->
-<!--        <item></item>-->
-<!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
 
 
     </string-array>
