@@ -1,56 +1,258 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical"
-android:padding="16dp">
 
-    <EditText
-        android:id="@+id/group_name"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="20dp"
-        android:hint="Group Name"
-        android:textSize="20sp" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/group_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="20dp"
-        android:hint="Description"
-        android:textSize="20sp" />
+        <TextView
+            android:id="@+id/group_info"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/group_info"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
 
-    <EditText
-        android:id="@+id/group_location"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="20dp"
-        android:hint="Meeting Location"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/group_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Group Name"
+            android:paddingBottom="16dp"
+            android:textSize="20sp" />
 
-    <AutoCompleteTextView
-        android:id="@+id/group_subject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:completionHint="Select a Subject"
-        android:completionThreshold="1"
-        android:dropDownAnchor="@id/group_subject"
-        android:dropDownHeight="150dp"
-        android:hint="Select a subject"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/group_description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Description"
+            android:paddingBottom="16dp"
+            android:textSize="20sp" />
 
-    <Button
-        android:id="@+id/create_group_button"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="80dp"
-        android:layout_marginRight="80dp"
-        android:layout_marginTop="100dp"
-        android:background="@drawable/round_views"
-        android:text="Create Group" />
+        <EditText
+            android:id="@+id/group_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:hint="Meeting Location"
+            android:paddingBottom="16dp"
+            android:textSize="20sp" />
 
-</LinearLayout>
+        <AutoCompleteTextView
+            android:id="@+id/group_subject"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:completionHint="Select a Subject"
+            android:completionThreshold="1"
+            android:dropDownAnchor="@id/group_subject"
+            android:dropDownHeight="150dp"
+            android:hint="Select a subject"
+            android:paddingBottom="16dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/study_habits"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="sans-serif"
+            android:text="@string/study_habits"
+            android:textColor="@color/black"
+            android:textSize="28sp" />
+
+        <TextView
+            android:id="@+id/study_habits_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/study_habits_day"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@+id/study_day_clicked">
+
+            <RadioButton
+                android:id="@+id/radio_button_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_day_first" />
+
+            <RadioButton
+                android:id="@+id/radio_button_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_day_second" />
+
+            <RadioButton
+                android:id="@+id/radio_button_weekend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_day_weekend" />
+
+            <RadioButton
+                android:id="@+id/radio_button_no_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_day_no" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/study_habits_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/study_habits_time"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@+id/study_time_clicked">
+
+            <RadioButton
+                android:id="@+id/radio_button_morning"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_time_morning" />
+
+            <RadioButton
+                android:id="@+id/radio_button_afternoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_time_afternoon" />
+
+            <RadioButton
+                android:id="@+id/radio_button_nighttime"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_time_nighttime" />
+
+            <RadioButton
+                android:id="@+id/radio_button_no_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_time_no" />
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/study_habits_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/study_habits_type"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_type"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@+id/study_type_clicked">
+
+            <RadioButton
+                android:id="@+id/radio_button_online"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_type_online" />
+
+            <RadioButton
+                android:id="@+id/radio_button_inperson"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_type_inperson" />
+
+            <RadioButton
+                android:id="@+id/radio_button_blended"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_type_blended" />
+
+            <RadioButton
+                android:id="@+id/radio_button_no_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_type_no" />
+
+        </RadioGroup>
+
+        <TextView
+            android:id="@+id/study_habits_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="@string/study_habits_method"
+            android:textColor="@color/black"
+            android:textSize="20sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_method"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:checkedButton="@+id/study_method_clicked">
+
+            <RadioButton
+                android:id="@+id/radio_button_visual"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_method_visual" />
+
+            <RadioButton
+                android:id="@+id/radio_button_auditory"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_method_auditory" />
+
+            <RadioButton
+                android:id="@+id/radio_button_reading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_method_reading" />
+
+            <RadioButton
+                android:id="@+id/radio_button_kinesthetic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_method_kinesthetic" />
+
+            <RadioButton
+                android:id="@+id/radio_button_no_method"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/study_method_no" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/create_group_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="80dp"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="80dp"
+            android:background="@drawable/round_views"
+            android:text="Create Group" />
+
+    </LinearLayout>
+
+</ScrollView>
