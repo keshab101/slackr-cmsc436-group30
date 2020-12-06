@@ -94,10 +94,13 @@ class RegistrationActivity : AppCompatActivity() {
                     val pDesc = "Testing post description 1"
                     val pTime = System.currentTimeMillis().toString()
                     val post = GroupPost(pTime, pTitle, pDesc, pTime, userId, name, email)
+                    var membersHash = HashMap<String,String>()
 
-                    val group1 = Group("123", "CMSC436", "5")
-                    val group2 = Group("234", "CMSC420 Group", "2")
-                    val group3 = Group("234", "Slacker Group", "4")
+                    membersHash[userId] = userId
+
+                    val group1 = Group("123", "CMSC436", "5", membersHash, "UMD Library", "Study group for CMSC436", "CMSC436")
+                    //val group2 = Group("234", "CMSC420 Group", "2")
+                    //val group3 = Group("234", "Slacker Group", "4")
 
                     //Put the Hashmap into the firebase
                     documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
@@ -113,17 +116,17 @@ class RegistrationActivity : AppCompatActivity() {
                     groupDB.child(id).setValue(group1)
                     groupDB.child(id).child("posts").push().setValue(post)
 
-                    val memberArray = ArrayList<String>()
-                    memberArray.add(userID)
+                    //val memberArray = ArrayList<String>()
+                    //memberArray.add(userID)
                     //groupDB.child(id).child("members").push().setValue(memberArray)
-                    groupDB.child(id).child("members").child(userID).setValue(userID)
+                    //groupDB.child(id).child("members").child(userID).setValue(userID)
 
-                    val userExampleGroup = ArrayList<String>()
-                    userExampleGroup.add(id)
-                    databaseRef.child(userID).child("groups").setValue(userExampleGroup)
+                    //val userExampleGroup = ArrayList<String>()
+                    //userExampleGroup.add(id)
+                    //databaseRef.child(userID).child("groups").setValue(userExampleGroup)
 
-                    groupDB.push().setValue(group2)
-                    groupDB.push().setValue(group3)
+                    //groupDB.push().setValue(group2)
+                    //groupDB.push().setValue(group3)
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)

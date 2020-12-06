@@ -5,15 +5,22 @@ android:layout_height="match_parent"
 android:orientation="vertical"
 android:padding="16dp">
 
-
-
     <EditText
-        android:id="@+id/create_group_name"
+        android:id="@+id/group_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
         android:layout_marginBottom="20dp"
         android:hint="Group Name"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/group_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="16dp"
+        android:layout_marginBottom="20dp"
+        android:hint="Description"
         android:textSize="20sp" />
 
     <EditText
@@ -25,41 +32,19 @@ android:padding="16dp">
         android:hint="Meeting Location"
         android:textSize="20sp" />
 
-<!--    <androidx.appcompat.widget.AppCompatRadioButton-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="match_parent"/>-->
-
-    <EditText
-        android:id="@+id/group_description"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:layout_marginBottom="20dp"
-        android:hint="Description"
-        android:textSize="20sp" />
-
-
-
-
     <AutoCompleteTextView
         android:id="@+id/group_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:completionHint="Select a subject"
+        android:completionHint="Select a Subject"
         android:completionThreshold="1"
-        android:dropDownAnchor="@id/text_view_subjects"
+        android:dropDownAnchor="@id/group_subject"
+        android:dropDownHeight="150dp"
         android:hint="Select a subject"
-        />
-    <TextView
-        android:id="@+id/text_view_subjects"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:text="Subject"
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/logout"
+        android:id="@+id/create_group_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="80dp"
@@ -67,4 +52,5 @@ android:padding="16dp">
         android:layout_marginTop="100dp"
         android:background="@drawable/round_views"
         android:text="Create Group" />
+
 </LinearLayout>

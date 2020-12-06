@@ -39,14 +39,24 @@ class HomeFragment : Fragment() {
                 var group: Group
                 var name: String
                 var groupId: String
-                var members: String
+                var membersCount: String
+                var members: HashMap<String, String>
+                var description: String
+                var location: String
+                var subject: String
+
                 groups.clear()
+
                 for (ds in snapshot.children) {
                     if (ds.child("members").child(user.uid).exists()){
                         name = ds.child("groupName").value.toString()
                         groupId = ds.child("groupId").value.toString()
-                        members = ds.child("groupMembers").value.toString()
-                        group = Group(groupId, name, members)
+                        membersCount = ds.child("groupMembers").value.toString()
+                        members = ds.child("members").value as HashMap<String, String>
+                        description = ds.child("groupDescription").value.toString()
+                        location = ds.child("groupLocation").value.toString()
+                        subject = ds.child("groupSubject").value.toString()
+                        group = Group(groupId, name, membersCount, members, location, description, subject)
                         groups.add(group)
                     }
                 }

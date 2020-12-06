@@ -15,10 +15,10 @@
 
     <LinearLayout
         android:layout_width="210dp"
-        android:layout_height="70dp"
-        android:orientation="vertical"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="5dp">
+        android:layout_marginRight="5dp"
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/group_name"
@@ -30,19 +30,54 @@
 
         <TextView
             android:id="@+id/group_members"
-            android:text="@string/test_group_members"
-            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </LinearLayout>
+            android:layout_height="wrap_content"
+            android:text="@string/test_group_members"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-    <Button
-        android:id="@+id/group_view_button"
-        android:layout_width="70dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:background="@drawable/round_views"
-        android:text="View" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/group_view_button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_views"
+                android:text="View" />
+
+            <Button
+                android:id="@+id/group_post_button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_views"
+                android:text="Post" />
+
+        </LinearLayout>
+
+<!--        <Button-->
+<!--            android:id="@+id/group_post_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:background="@drawable/round_views"-->
+<!--            android:text="Post" />-->
+
+<!--        <Button-->
+<!--            android:id="@+id/group_view_button"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginTop="15dp"-->
+<!--            android:background="@drawable/round_views"-->
+<!--            android:text="View" />-->
+
+    </LinearLayout>
 
 
 </LinearLayout>
