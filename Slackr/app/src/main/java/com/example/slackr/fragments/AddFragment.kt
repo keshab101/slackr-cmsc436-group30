@@ -26,6 +26,11 @@ class AddFragment : Fragment() {
     private var buttonCreateGroup: Button? = null
     private var currentUser: FirebaseUser? = null
     private var databaseRef: DatabaseReference? = null
+    private var radioGroupDay: RadioGroup? = null
+    private var radioGroupTime: RadioGroup? = null
+    private var radioGroupType: RadioGroup? = null
+    private var radioGroupMethod: RadioGroup? = null
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,6 +45,10 @@ class AddFragment : Fragment() {
         description = view.findViewById<View>(R.id.group_description) as EditText
         subject = view.findViewById<View>(R.id.group_subject) as AutoCompleteTextView
         buttonCreateGroup = view.findViewById<View>(R.id.create_group_button) as Button
+        radioGroupDay = view.findViewById<View>(R.id.radioGroup_days) as RadioGroup
+        radioGroupTime = view.findViewById<View>(R.id.radioGroup_time) as RadioGroup
+        radioGroupType = view.findViewById<View>(R.id.radioGroup_type) as RadioGroup
+        radioGroupMethod = view.findViewById<View>(R.id.radioGroup_method) as RadioGroup
 
         subjects = resources.getStringArray(R.array.subjects)
         adapter = ArrayAdapter<String>(
@@ -68,6 +77,9 @@ class AddFragment : Fragment() {
         val subjectStr = subject!!.text.toString()
         val groupMemberCount = "1"
         val memberHash = HashMap<String, String>()
+
+        // Get selected radio buttons
+        val daySelected = radioGroupDay!!.checkedRadioButtonId
 
         // Get the group ID
         databaseRef = FirebaseDatabase.getInstance().getReference("groups")
