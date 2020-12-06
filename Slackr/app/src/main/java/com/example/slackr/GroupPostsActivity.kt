@@ -1,25 +1,17 @@
 package com.example.slackr
 
 import android.content.Intent
-import android.icu.lang.UCharacter
 import android.os.Bundle
-import android.util.Log
-import android.view.LayoutInflater
 import android.view.Menu
-import android.view.MenuInflater
 import android.view.MenuItem
-import android.widget.ListView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.slackr.fragments.Group
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
-import com.google.firebase.database.ktx.getValue
 
 class GroupPostsActivity : AppCompatActivity() {
 

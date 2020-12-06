@@ -1,16 +1,13 @@
-package com.example.slackr.fragments
+package com.example.slackr
 
 import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
-import android.util.Log
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
-import com.example.slackr.R
-import com.example.slackr.GroupPostsActivity
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
     R.layout.group_list, groups) {

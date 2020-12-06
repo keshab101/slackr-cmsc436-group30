@@ -1,4 +1,4 @@
-package com.example.slackr.fragments
+package com.example.slackr
 
 import com.google.firebase.database.DatabaseReference
 
