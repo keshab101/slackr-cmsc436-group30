@@ -8,12 +8,6 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
-<<<<<<< HEAD:Slackr/app/src/main/java/com/example/slackr/GroupList.kt
-=======
-import com.example.slackr.R
-import com.example.slackr.GroupPostsActivity
-import com.example.slackr.GroupViewActivity
->>>>>>> d77ec8b35875e2ba7f8342745e4378210aa0a943:Slackr/app/src/main/java/com/example/slackr/fragments/GroupList.kt
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
     R.layout.group_list, groups) {

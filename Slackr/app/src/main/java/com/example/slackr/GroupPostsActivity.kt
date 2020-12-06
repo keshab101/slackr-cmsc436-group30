@@ -27,12 +27,8 @@ class GroupPostsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_group_posts)
 
-        //Set up RecyclerView
+        //Set up RecyclerView and layout manager
         val mRecyclerView = findViewById<RecyclerView>(R.id.group_posts_list)
-        val dividerItemDecoration: RecyclerView.ItemDecoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
-        mRecyclerView.addItemDecoration(dividerItemDecoration)
-
-        //Set the layout manager
         mRecyclerView.layoutManager = LinearLayoutManager(this)
         (mRecyclerView.layoutManager as LinearLayoutManager).stackFromEnd = true
         (mRecyclerView.layoutManager as LinearLayoutManager).reverseLayout = true
@@ -57,7 +53,7 @@ class GroupPostsActivity : AppCompatActivity() {
                 for (ds in snapshot.child("posts").children) {
                     post = ds.getValue(GroupPost::class.java)
                     groupPosts.add(post!!)
-                    mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post)
+                    mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post_view)
                 }
             }
             override fun onCancelled(error: DatabaseError) {

@@ -31,8 +31,18 @@ class GroupViewActivity : AppCompatActivity() {
         groupLocation!!.text = intent.getStringExtra("GroupLocation")
         groupMember!!.text = intent.getStringExtra("GroupMembersCount")
 
+        // Set up the action bar to display group name
+        supportActionBar!!.title = "${groupName!!.text} Info"
+
     }
 
+    //If the user clicks on back button at top, go back to home page
+    override fun onSupportNavigateUp(): Boolean {
+        onBackPressed()
+        return super.onSupportNavigateUp()
+    }
+
+    // We used Log to debug our code
     companion object {
         const val TAG = "Slacker-App"
     }

@@ -16,7 +16,7 @@ internal class GroupPostAdapter(
 
     // Create ViewHolder which holds a View to be displayed
     override fun onCreateViewHolder(viewGroup: ViewGroup, i: Int): ViewHolder {
-        val v = LayoutInflater.from(viewGroup.context).inflate(R.layout.single_group_post, viewGroup, false)
+        val v = LayoutInflater.from(viewGroup.context).inflate(mRowLayout, viewGroup, false)
         return ViewHolder(v)
     }
 

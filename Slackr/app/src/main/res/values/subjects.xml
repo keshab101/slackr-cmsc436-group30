@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="subjects">
+
+        <!--  Math -->
+        <item>Math</item>
+        <item>Pre-calculus</item>
+        <item>Calculus I</item>
+        <item>Calculus II</item>
+        <item>Calculus III</item>
+        <item>Algebra</item>
+        <item>Functions</item>
+        <item>Modeling</item>
+        <item>Geometry</item>
+        <item>Statistics</item>
+        <item>Probability</item>
+        <item>Trigonometry and/or Calculus</item>
+        <item>Algebra</item>
+        <item>Algebra II</item>
+
+
+        <!--  English or Language Arts -->
+        <item>Literature</item>
+        <item>Speech</item>
+        <item>Drama</item>
+        <item>Theater</item>
+        <item>Writing or Composition</item>
+
+        <!--       Science -->
+        <item>Biology</item>
+        <item>Chemistry</item>
+        <item>Environmental Science</item>
+        <item>Earth or Space Sciences</item>
+        <item>Physics</item>
+
+        <!--        Social Studies-->
+        <item>Economics</item>
+        <item>Geography</item>
+        <item>U.S. Government</item>
+        <item>U.S. History</item>
+        <item>World History</item>
+
+        <!--        Foreign Languages -->
+        <item>French</item>
+        <item>German</item>
+        <item>Spanish</item>
+        <item>English</item>
+        <item>Italian</item>
+        <item>Russian</item>
+
+        <!--        Other School Classes -->
+        <item>Arts</item>
+        <item>Music</item>
+        <item>Photography</item>
+        <item>Pottery</item>
+        <item>Computer applications</item>
+        <item>Graphic design</item>
+        <item>Web design</item>
+        <item>Physical education</item>
+        <item>Psychology</item>
+        <item></item>
+
+        <!--        Computer Science -->
+        <item>Artificial Intelligence</item>
+        <item>Algorithms</item>
+        <item>Databases</item>
+        <item>Machine Learning</item>
+        <item>Computer Vision</item>
+        <item>Computer Graphics</item>
+
+        <item>Object-Oriented Programming</item>
+        <item>Discrete Structure</item>
+        <item>Data Structures</item>
+        <item>Software Engineering</item>
+        <item>Cryptology</item>
+        <item>Hand Held Programming Devices</item>
+
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+        <!--        <item></item>-->
+
+
+    </string-array>
+
+</resources>

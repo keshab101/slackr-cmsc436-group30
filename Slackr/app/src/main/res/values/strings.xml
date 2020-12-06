@@ -27,92 +27,13 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank group fragment</string>
     <string name="title_activity_test2">TestActivity2</string>
+
+
     <!-- Strings used for fragments for navigation -->
     <string name="first_fragment_label">First Fragment</string>
     <string name="second_fragment_label">Second Fragment</string>
     <string name="next">Next</string>
     <string name="previous">Previous</string>
-
-    <string-array name="subjects">
-        <!--  Math -->
-        <item>Pre-calculus</item>
-        <item>Calculus I</item>
-        <item>Calculus II</item>
-        <item>Calculus III</item>
-        <item>Algebra</item>
-        <item>Functions</item>
-        <item>Modeling</item>
-        <item>Geometry</item>
-        <item>Statistics</item>
-        <item>Probability</item>
-        <item>Trigonometry and/or Calculus</item>
-        <item>Algebra</item>
-        <item>Algebra II</item>
-
-
-        <!--  English or Language Arts -->
-
-        <item>Literature</item>
-        <item>Speech</item>
-        <item>Writing or Composition</item>
-
-        <!--       Science -->
-        <item>Biology</item>
-        (typically has advanced classes)
-        <item>Chemistry</item>
-        (typically has advanced classes)
-        <item>Earth or Space Sciences</item>
-        <item>Physics</item>
-
-        <!--        Social Studies-->
-        <item>Economics</item>
-        <item>Geography</item>
-        <item>U.S. Government</item>
-        <item>U.S. History</item>
-        <item>World History</item>
-
-        <!--        Foreign Languages -->
-        <item>French</item>
-        <item>German</item>
-        <item>Spanish</item>
-        <item></item>
-        <item></item>
-
-        <!--        Other School Classes -->
-        <item>Arts</item>
-        <item>music</item>
-        <item>photography</item>
-        <item>pottery</item>
-        <item>Computer applications</item>
-        <item>graphic design</item>
-        <item>web design</item>
-        <item>Physical education</item>
-        <item>Psychology</item>
-        <item></item>
-
-        <!--        Computer Science -->
-        <item>Artificial Intelligence</item>
-        <item>Algorithms</item>
-        <item>Databases</item>
-        <item>Machine Learning</item>
-        <item>Computer Vision</item>
-        <item>Computer Graphics</item>
-
-        <item>Object-Oriented Programming</item>
-        <item>Discrete Structure</item>
-        <item>Data Structures</item>
-        <item>Software Engineering</item>
-        <item>Cryptology</item>
-        <item>Hand Held Programming Devices</item>
-
-        <!--        <item></item>-->
-        <!--        <item></item>-->
-        <!--        <item></item>-->
-        <!--        <item></item>-->
-        <!--        <item></item>-->
-
-
-    </string-array>
 
 
 </resources>

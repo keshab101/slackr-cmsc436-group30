@@ -1,0 +1,96 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="7dp"
+    android:layout_margin="5dp"
+    android:layout_marginBottom="10dp"
+    app:cardElevation="10dp"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+        <LinearLayout
+            android:id="@+id/user_pic_with_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="7dp"
+            android:layout_marginRight="7dp"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:id="@+id/group_post_userImg"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/ic_default_userimg"/>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_weight="1">
+
+                <TextView
+                    android:id="@+id/group_post_userName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:text="@string/test_username"
+                    android:textColor="@color/black"
+                    android:fontFamily="sans-serif"
+                    android:textSize="20sp"/>
+
+                <TextView
+                    android:id="@+id/group_post_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="5dp"
+                    android:text="9 min"/>
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_below="@id/user_pic_with_name">
+
+            <TextView
+                android:id="@+id/group_post_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Group Post Title"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="7dp"
+                android:textSize="20sp"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:id="@+id/group_post_description"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Post Description"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="7dp"
+                android:layout_marginBottom="9dp"
+                android:textSize="15sp"
+                android:textColor="@color/black"/>
+
+        </LinearLayout>
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+</androidx.cardview.widget.CardView>
