@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
+import android.widget.TextView
 import com.example.slackr.Group
 import com.example.slackr.GroupList
 import com.example.slackr.R
@@ -17,6 +18,7 @@ class HomeFragment : Fragment() {
 
     private lateinit var groupList: ListView
     private lateinit var groups: MutableList<Group>
+    private lateinit var emptyTextView: TextView
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var user: FirebaseUser
     private lateinit var fireDatabase: FirebaseDatabase
@@ -27,6 +29,8 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         groupList = view.findViewById(R.id.group_list)
+        emptyTextView = view.findViewById(R.id.empty_group_view)
+        groupList.emptyView = emptyTextView
         groups = ArrayList()
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
