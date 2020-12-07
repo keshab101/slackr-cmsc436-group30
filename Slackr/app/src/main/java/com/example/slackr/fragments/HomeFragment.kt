@@ -1,6 +1,7 @@
 package com.example.slackr.fragments
 
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -50,9 +51,10 @@ class HomeFragment : Fragment() {
                 var subject: String
 
                 groups.clear()
-
                 for (ds in snapshot.children) {
                     if (ds.child("members").child(user.uid).exists()){
+                        Log.i("Slacker-App",  "User UID - ${ds.child("members")}")
+
                         name = ds.child("groupName").value.toString()
                         groupId = ds.child("groupId").value.toString()
                         membersCount = ds.child("groupMembers").value.toString()
