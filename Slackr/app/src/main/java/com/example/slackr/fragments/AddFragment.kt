@@ -9,6 +9,8 @@ import android.view.ViewGroup
 import android.widget.*
 import com.example.slackr.Group
 import com.example.slackr.R
+import com.example.slackr.StudyHabit
+import com.example.slackr.Validators
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -25,7 +27,8 @@ class AddFragment : Fragment() {
     private var adapter: ArrayAdapter<String>? = null
     private var buttonCreateGroup: Button? = null
     private var currentUser: FirebaseUser? = null
-    private var databaseRef: DatabaseReference? = null
+    private var databaseRefGroup: DatabaseReference? = null
+    private var databaseRefHabit: DatabaseReference? = null
     private var radioGroupDay: RadioGroup? = null
     private var radioGroupTime: RadioGroup? = null
     private var radioGroupType: RadioGroup? = null
@@ -77,35 +80,89 @@ class AddFragment : Fragment() {
         val subjectStr = subject!!.text.toString()
         val groupMemberCount = "1"
         val memberHash = HashMap<String, String>()
+        val validator = Validators()
 
-        // Get selected radio buttons
-        val daySelected = radioGroupDay!!.checkedRadioButtonId
+        // Get selected radio buttons' ids
+        val daySelectedId = radioGroupDay!!.checkedRadioButtonId
+        val timeSelectedId = radioGroupTime!!.checkedRadioButtonId
+        val typeSelectedId = radioGroupType!!.checkedRadioButtonId
+        val methodSelectedId = radioGroupMethod!!.checkedRadioButtonId
+
+        var daySelected: RadioButton
+        var timeSelected: RadioButton
+        var typeSelected: RadioButton
+        var methodSelected: RadioButton
+
+        var dayStr = ""
+        var timeStr = ""
+        var typeStr = ""
+        var methodStr = ""
+
+        // If one of the options for each habit is selected
+        if ((daySelectedId != -1) && (timeSelectedId != -1) && (typeSelectedId != -1) && (methodSelectedId != -1)) {
+
+            // Get selected radio buttons
+            daySelected = view!!.findViewById<View>(daySelectedId) as RadioButton
+            timeSelected = view!!.findViewById<View>(timeSelectedId) as RadioButton
+            typeSelected = view!!.findViewById<View>(typeSelectedId) as RadioButton
+            methodSelected = view!!.findViewById<View>(methodSelectedId) as RadioButton
+
+            // Get string values from selected buttons
+            dayStr = daySelected.text.toString()
+            timeStr = timeSelected.text.toString()
+            typeStr = typeSelected.text.toString()
+            methodStr = methodSelected.text.toString()
+        }
+
+        // Create a StudyHabit object
+        val newStudyHabit = StudyHabit(dayStr, timeStr, typeStr, methodStr, subjectStr)
+        databaseRefHabit = FirebaseDatabase.getInstance().getReference("studyHabits")
+
 
         // Get the group ID
-        databaseRef = FirebaseDatabase.getInstance().getReference("groups")
-        val groupId = databaseRef!!.push().key.toString()
+        databaseRefGroup = FirebaseDatabase.getInstance().getReference("groups")
+        val groupId = databaseRefGroup!!.push().key.toString()
 
         // Add members using a hash map
         memberHash[userId] = userId
 
         // Create a Group object
         val newGroup = Group(groupId, groupNameStr, groupMemberCount, memberHash,
-                             meetingLocationStr, descriptionStr, subjectStr)
+            meetingLocationStr, descriptionStr, subjectStr)
 
-        // Store the group into the database
-        databaseRef!!.child(groupId).setValue(newGroup).addOnCompleteListener { task ->
-            if(task.isSuccessful) {
+        if (validator.validText(groupNameStr) && validator.validText(descriptionStr)
+            && validator.validText(subjectStr) && validator.validText(dayStr)
+            && validator.validText(timeStr) && validator.validText(typeStr) &&
+            validator.validText(methodStr)) {
 
-                // Clear out text fields after creating a group
-                groupName!!.text.clear()
-                meetingLocation!!.text.clear()
-                description!!.text.clear()
-                subject!!.text.clear()
+            // Store the group into the database
+            databaseRefGroup!!.child(groupId).setValue(newGroup).addOnCompleteListener { taskGroup ->
+                //if (taskGroup.isSuccessful) {
 
-                Toast.makeText(context, "Group Successfully Created", Toast.LENGTH_SHORT).show()
-            } else {
-                Toast.makeText(context, "Failed to create the group", Toast.LENGTH_SHORT).show()
+                    // Store the study habit into the database
+                    databaseRefHabit!!.child(groupId).setValue(newStudyHabit).addOnCompleteListener { taskHabit ->
+                            if (taskGroup.isSuccessful && taskHabit.isSuccessful) {
+
+                                // Clear out text fields after creating a group
+                                groupName!!.text.clear()
+                                meetingLocation!!.text.clear()
+                                description!!.text.clear()
+                                subject!!.text.clear()
+
+                                // Reset radio groups
+                                radioGroupDay!!.clearCheck()
+                                radioGroupTime!!.clearCheck()
+                                radioGroupType!!.clearCheck()
+                                radioGroupMethod!!.clearCheck()
+
+                                Toast.makeText(context, "Group Successfully Created", Toast.LENGTH_SHORT).show()
+                            } else {
+                                Toast.makeText(context, "Failed to Create the Group", Toast.LENGTH_SHORT).show()
+                            }
+                        }
             }
+        } else {
+            Toast.makeText(context, "Failed to Create the Group", Toast.LENGTH_SHORT).show()
         }
     }
 
