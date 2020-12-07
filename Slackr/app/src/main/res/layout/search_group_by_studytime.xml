@@ -14,7 +14,7 @@
             android:layout_marginBottom="30dp"
             android:gravity="center"
             android:fontFamily="sans-serif"
-            android:text="Search by Week Times"
+            android:text="Search by Study Times"
             android:textColor="@color/white"
             android:textSize="30sp" />
 
@@ -22,40 +22,39 @@
             android:id="@+id/radioGroup_days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:checkedButton="@+id/study_day_clicked">
+            android:layout_marginLeft="10dp">
 
             <RadioButton
-                android:id="@+id/radio_button_first"
+                android:id="@+id/radio_button_morning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:buttonTint="@color/white"
-                android:text="@string/study_day_first" />
+                android:text="@string/study_time_morning" />
 
             <RadioButton
-                android:id="@+id/radio_button_second"
+                android:id="@+id/radio_button_afternoon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:buttonTint="@color/white"
-                android:text="@string/study_day_second" />
+                android:text="@string/study_time_afternoon" />
 
             <RadioButton
-                android:id="@+id/radio_button_weekend"
+                android:id="@+id/radio_button_nighttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:buttonTint="@color/white"
-                android:text="@string/study_day_weekend" />
+                android:text="@string/study_time_nighttime" />
 
             <RadioButton
-                android:id="@+id/radio_button_no_day"
+                android:id="@+id/radio_button_no_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
                 android:buttonTint="@color/white"
-                android:text="@string/study_day_no" />
+                android:text="@string/study_time_no" />
         </RadioGroup>
 
         <Button

@@ -27,7 +27,14 @@
         <activity android:name=".GroupViewActivity" />
         <activity android:name=".GroupPostsActivity" />
         <activity android:name=".GroupPostCreateActivity" />
+
+        <!-- For Search Activities -->
+        <activity android:name=".searchGroupTypes.SearchDayTime" />
+        <activity android:name=".searchGroupTypes.SearchEnvironment" />
+        <activity android:name=".searchGroupTypes.SearchLearningType" />
         <activity android:name=".searchGroupTypes.SearchSubject"/>
+        <activity android:name=".searchGroupTypes.SearchWeekly" />
+
 
         <meta-data
             android:name="preloaded_fonts"
