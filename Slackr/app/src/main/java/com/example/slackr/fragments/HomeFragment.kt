@@ -76,7 +76,7 @@ class HomeFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
+        //        Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
             }
         })
         return view

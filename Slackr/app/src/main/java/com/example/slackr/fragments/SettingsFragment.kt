@@ -1,13 +1,10 @@
 package com.example.slackr.fragments
 
-import android.app.Activity
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.*
 import androidx.fragment.app.Fragment
 import com.example.slackr.EditProfile
-import com.example.slackr.LoginActivity
 import com.example.slackr.MainActivity
 import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
@@ -39,17 +36,19 @@ class SettingsFragment : Fragment() {
 
     // Checks if "Sign Out" is clicked
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
+        return when (item.itemId) {
             MENU_EDIT_PROFILE -> {
                 startActivity(Intent(context, EditProfile::class.java))
-                return true
+                true
             }
             MENU_SIGN_OUT -> {
                 firebaseAuth.signOut()
-                startActivity(Intent(context, MainActivity::class.java))
-                return true
+                val intent = Intent(context, MainActivity::class.java)
+                intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(intent)
+                true
             }
-            else -> return super.onOptionsItemSelected(item)
+            else -> super.onOptionsItemSelected(item)
         }
     }
 
