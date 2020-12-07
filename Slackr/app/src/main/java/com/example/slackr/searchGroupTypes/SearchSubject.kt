@@ -30,7 +30,7 @@ class SearchSubject: AppCompatActivity() {
 
         subjects = resources.getStringArray(R.array.subjects)
         adapter = ArrayAdapter<String>(
-            this,
+            this@SearchSubject,
             R.layout.cg_custom_subject_item, R.id.text_view_list_item, subjects!!
         )
         subject!!.setAdapter(adapter)

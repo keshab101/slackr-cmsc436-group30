@@ -27,7 +27,7 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
         val location = group.groupLocation
         val subject = group.groupSubject
         val membersCount = group.groupMembers
-        val members = group.members
+        val members: HashMap<String, String> = group.members
         groupName.text = name
         groupMembers.text = ("$membersCount members")
 

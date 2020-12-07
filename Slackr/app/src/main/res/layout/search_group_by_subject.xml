@@ -25,7 +25,7 @@
         android:layout_marginBottom="20dp"
         android:completionHint="Select a Subject"
         android:completionThreshold="1"
-        android:dropDownAnchor="@id/group_subject"
+        android:dropDownAnchor="@id/search_group_subject"
         android:dropDownHeight="150dp"
         android:hint="Type a subject"
         android:paddingBottom="16dp"

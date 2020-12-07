@@ -104,7 +104,7 @@ class RegistrationActivity : AppCompatActivity() {
                     //Put the Hashmap into the firebase
                     documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
                         if (task.isSuccessful) {
-                            Log.d("User Hashmap", "user profile created for - $userID")
+                            Log.d("User Hashmap", "User profile created for - $userID")
                         }
                     }
                     //Storing the user's information in database
