@@ -67,6 +67,7 @@ class HomeFragment : Fragment() {
                 val groupAdapter = this@HomeFragment.activity?.let { GroupList(it, groups) }
                 groupList.adapter = groupAdapter
             }
+
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
             }

@@ -17,7 +17,6 @@ class SearchActivity: AppCompatActivity() {
 
     private var searchKey: String? = null
     private var searchOption: String? = null
-    private var currentUser: FirebaseUser? = null
     private var databaseRefHabit: DatabaseReference? = null
     private var databaseRefGroup: DatabaseReference? = null
     private lateinit var groups: MutableList<Group>
@@ -30,7 +29,6 @@ class SearchActivity: AppCompatActivity() {
 
         searchKey = intent.getStringExtra(SEARCH_TYPE)
         searchOption = intent.getStringExtra(SELECTED_BUTTON)
-        currentUser = FirebaseAuth.getInstance().currentUser
         databaseRefHabit = FirebaseDatabase.getInstance().getReference("studyHabits")
         databaseRefGroup = FirebaseDatabase.getInstance().getReference("groups")
         groupList = findViewById(R.id.result_group_list)
@@ -55,38 +53,30 @@ class SearchActivity: AppCompatActivity() {
                     if (ds.child(searchKey!!).value.toString() == searchOption){
 
                         groupId = ds.key.toString()
-                        Log.i(TAG, "////////////////////////groupId/////////////: $groupId")
 
                         databaseRefGroup!!.addListenerForSingleValueEvent(object: ValueEventListener {
                             override fun onDataChange(snapshot: DataSnapshot) {
 
-                                var groupinfo = snapshot.child(groupId).key.toString()
-                                Log.i(TAG, "////////////////////////groupinfo/////////////: $groupinfo")
-
                                 name = snapshot.child(groupId).child("groupName").value.toString()
-                                Log.i(TAG, "////////////////////////name/////////////: $name")
                                 membersCount = snapshot.child(groupId).child("groupMembers").value.toString()
-                                Log.i(TAG, "////////////////////////membersCount/////////////: $membersCount")
                                 members = snapshot.child(groupId).child("members").value as HashMap<String, String>
-                                Log.i(TAG, "////////////////////////members/////////////: $members")
                                 description = snapshot.child(groupId).child("groupDescription").value.toString()
-                                Log.i(TAG, "////////////////////////description/////////////: $description")
                                 location = snapshot.child(groupId).child("groupLocation").value.toString()
-                                Log.i(TAG, "////////////////////////location/////////////: $location")
                                 subject = snapshot.child(groupId).child("groupSubject").value.toString()
-                                Log.i(TAG, "////////////////////////subject/////////////: $subject")
                                 group = Group(groupId, name, membersCount, members, location, description, subject)
                                 groups.add(group)
 
+                                val groupResultAdapter = GroupListSearchResult(this@SearchActivity, groups)
+                                groupList.adapter = groupResultAdapter
                             }
+
                             override fun onCancelled(error: DatabaseError) {
                                 TODO("Not yet implemented")
                             }
                         })
                     }
                 }
-                val groupResultAdapter = GroupListSearchResult(this@SearchActivity, groups)
-                groupList.adapter = groupResultAdapter
+
             }
             override fun onCancelled(error: DatabaseError) {
                 TODO("Not yet implemented")
