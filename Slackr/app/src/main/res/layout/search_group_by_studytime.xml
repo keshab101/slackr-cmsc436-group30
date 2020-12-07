@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/splash_color"
+    android:gravity="center">
+
+        <TextView
+            android:id="@+id/study_habits_day"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:gravity="center"
+            android:fontFamily="sans-serif"
+            android:text="Search by Week Times"
+            android:textColor="@color/white"
+            android:textSize="30sp" />
+
+        <RadioGroup
+            android:id="@+id/radioGroup_days"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:checkedButton="@+id/study_day_clicked">
+
+            <RadioButton
+                android:id="@+id/radio_button_first"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:text="@string/study_day_first" />
+
+            <RadioButton
+                android:id="@+id/radio_button_second"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:text="@string/study_day_second" />
+
+            <RadioButton
+                android:id="@+id/radio_button_weekend"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:text="@string/study_day_weekend" />
+
+            <RadioButton
+                android:id="@+id/radio_button_no_day"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/white"
+                android:buttonTint="@color/white"
+                android:text="@string/study_day_no" />
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="40dp"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="40dp"
+            android:background="@drawable/round_views"
+            android:text="Search" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
