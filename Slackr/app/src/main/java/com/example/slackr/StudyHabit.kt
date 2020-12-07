@@ -15,4 +15,7 @@ class StudyHabit {
         this.studyMethod = studyMethod
         this.studySubject = studySubject
     }
+
+
+
 }

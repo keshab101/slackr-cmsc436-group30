@@ -24,7 +24,7 @@ class SearchEnvironment: AppCompatActivity() {
 
         // Get reference
         radioGroupType = findViewById<View>(R.id.search_radioGroup_type) as RadioGroup
-        searchButton = findViewById<View>(R.id.search_search_group) as Button
+        searchButton = findViewById<View>(R.id.search_env_button) as Button
 
         // Set on click listener
         searchButton!!.setOnClickListener{

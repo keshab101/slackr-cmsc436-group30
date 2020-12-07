@@ -1,5 +1,6 @@
 package com.example.slackr.fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -31,7 +32,6 @@ class HomeFragment : Fragment() {
 
         groupList = view.findViewById(R.id.group_list)
         emptyTextView = view.findViewById(R.id.empty_group_view)
-        groupList.emptyView = emptyTextView
         groups = ArrayList()
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
@@ -39,6 +39,7 @@ class HomeFragment : Fragment() {
 
 
         val groupDatabase = fireDatabase.getReference("groups")
+        emptyTextView.visibility = View.GONE
         groupDatabase.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group
@@ -53,7 +54,6 @@ class HomeFragment : Fragment() {
                 groups.clear()
                 for (ds in snapshot.children) {
                     if (ds.child("members").child(user.uid).exists()){
-                        Log.i("Slacker-App",  "User UID - ${ds.child("members")}")
 
                         name = ds.child("groupName").value.toString()
                         groupId = ds.child("groupId").value.toString()
@@ -74,6 +74,8 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
+        // If the user isn't in any groups in the database
+        groupList.emptyView = emptyTextView
 
         return view
     }

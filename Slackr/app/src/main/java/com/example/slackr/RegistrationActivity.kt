@@ -86,7 +86,6 @@ class RegistrationActivity : AppCompatActivity() {
                     val userHash: HashMap<String, String> = HashMap()
                     userHash["userName"] = name
                     userHash["email"] = email
-                    //userHash["uid"] = userID.toString()
 
                     //Create a post
                     val userId = userID.toString()
