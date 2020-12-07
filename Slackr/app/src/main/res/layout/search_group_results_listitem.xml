@@ -7,46 +7,60 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/group_pic"
+        android:id="@+id/result_group_pic"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/group_icon"
         android:background="@drawable/gray_tint_background"/>
 
     <LinearLayout
-        android:layout_width="210dp"
+        android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/group_name"
+            android:id="@+id/result_group_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
-            android:text="@string/test_group"
             android:maxLines="1"
-            android:importantForAutofill="yes"
+            android:text="@string/test_group"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/group_members"
+            android:id="@+id/result_group_members"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/test_group_members"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
 
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
 
-    <Button
-        android:id="@+id/group_view_button"
-        android:layout_width="80dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginEnd="20dp"
-        android:background="@drawable/round_views"
-        android:text="Join" />
+            <Button
+                android:id="@+id/result_group_view_button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="20dp"
+                android:background="@drawable/round_views"
+                android:text="View" />
+
+            <Button
+                android:id="@+id/result_group_join_button"
+                android:layout_width="80dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/round_views"
+                android:text="Join" />
+
+        </LinearLayout>
+    </LinearLayout>
 
 </LinearLayout>
 

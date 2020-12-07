@@ -1,171 +1,210 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent">
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/scrollView"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true">
 
-    <RelativeLayout
-        android:id="@+id/group_view_info_pic"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:layout_alignBottom="@id/group_view_info"
-        android:paddingBottom="20dp">
-
-        <ImageView
-            android:id="@+id/group_view_pic"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_centerVertical="true"
-            android:layout_marginStart="15dp"
-            android:layout_marginEnd="15dp"
-            android:background="@drawable/gray_tint_background"
-            android:src="@drawable/group_icon"
-            android:contentDescription="TODO" />
-
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/group_view_info"
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/group_view_info_pic"
-        android:paddingTop="10dp"
-        android:paddingBottom="30dp">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/group_view_name"
+        <RelativeLayout
+            android:id="@+id/group_view_info_pic"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="15sp"
-            android:fontFamily="sans-serif"
-            android:text="Group Name"
-            android:textColor="@color/black"
-            android:textSize="32sp" />
+            android:layout_height="match_parent"
+            android:layout_alignBottom="@id/group_view_info"
+            android:paddingBottom="20dp">
 
-        <TextView
-            android:id="@+id/group_view_subject"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/group_view_name"
-            android:layout_centerHorizontal="true"
-            android:fontFamily="sans-serif"
-            android:text="Group Subject"
-            android:textAllCaps="true"
-            android:textColor="@color/black"
-            android:textSize="18sp" />
+            <ImageView
+                android:id="@+id/group_view_pic"
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="15dp"
+                android:layout_marginEnd="15dp"
+                android:background="@drawable/gray_tint_background"
+                android:contentDescription="TODO"
+                android:src="@drawable/group_icon" />
 
-    </RelativeLayout>
+        </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/group_view_detail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/group_view_info">
-
-        <LinearLayout
+        <RelativeLayout
+            android:id="@+id/group_view_info"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="10dp"
-            android:orientation="vertical">
+            android:layout_toEndOf="@id/group_view_info_pic"
+            android:paddingTop="10dp"
+            android:paddingBottom="30dp">
+
+            <TextView
+                android:id="@+id/group_view_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="15sp"
+                android:fontFamily="sans-serif"
+                android:text="Group Name"
+                android:textColor="@color/black"
+                android:textSize="32sp" />
+
+            <TextView
+                android:id="@+id/group_view_subject"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/group_view_name"
+                android:layout_centerHorizontal="true"
+                android:fontFamily="sans-serif"
+                android:text="Group Subject"
+                android:textAllCaps="true"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/group_view_detail"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/group_view_info">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginRight="10dp"
                 android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Group Description"
-                    android:textColor="#888888"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/group_view_description"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Group Description"
-                    android:textColor="#000000"
-                    android:layout_marginTop="6dp"
-                    android:textSize="20sp" />
-
-                <View
+                <LinearLayout
                     android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/grey" />
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group Description"
+                        android:textColor="#888888"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_view_description"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Group Description"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group Location"
+                        android:textColor="#888888"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_view_location"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Group Location"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Group Members"
+                        android:textColor="#888888"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_view_group_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Group Members"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Members"
+                        android:textColor="#888888"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/group_view_members"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:fontFamily="sans-serif-light"
+                        android:text="Members"
+                        android:textColor="#000000"
+                        android:textSize="20sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="5dp"
+                        android:background="@color/grey" />
+
+                </LinearLayout>
+
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Group Location"
-                    android:textColor="#888888"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/group_view_location"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Group Location"
-                    android:textColor="#000000"
-                    android:layout_marginTop="6dp"
-                    android:textSize="20sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/grey" />
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="15dp"
-                android:orientation="vertical">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Group Members"
-                    android:textColor="#888888"
-                    android:textSize="16sp" />
-
-                <TextView
-                    android:id="@+id/group_view_group_members"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-light"
-                    android:text="Group Members"
-                    android:textColor="#000000"
-                    android:layout_marginTop="6dp"
-                    android:textSize="20sp" />
-
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="1dp"
-                    android:layout_marginTop="5dp"
-                    android:background="@color/grey" />
-
-            </LinearLayout>
-
-
-        </LinearLayout>
+        </RelativeLayout>
 
     </RelativeLayout>
 
-</RelativeLayout>
+</ScrollView>

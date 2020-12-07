@@ -10,12 +10,12 @@ import android.widget.Button
 import android.widget.TextView
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
-    R.layout.group_list, groups) {
+    R.layout.group_listitem, groups) {
 
     @SuppressLint("InflateParams", "ViewHolder")
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         val inflater = context.layoutInflater
-        val groupListItem = inflater.inflate(R.layout.group_list, null, true)
+        val groupListItem = inflater.inflate(R.layout.group_listitem, null, true)
 
         val groupName = groupListItem.findViewById<View>(R.id.group_name) as TextView
         val groupMembers = groupListItem.findViewById<View>(R.id.group_members) as TextView
@@ -27,6 +27,7 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
         val location = group.groupLocation
         val subject = group.groupSubject
         val membersCount = group.groupMembers
+        val members = group.members
         groupName.text = name
         groupMembers.text = ("$membersCount members")
 
@@ -49,6 +50,7 @@ class GroupList(private val context: Activity, private var groups: List<Group>) 
             viewIntent.putExtra("GroupLocation", location)
             viewIntent.putExtra("GroupSubject", subject)
             viewIntent.putExtra("GroupMembersCount", membersCount)
+            viewIntent.putExtra("Members", members)
 
             context.startActivity(viewIntent)
         }

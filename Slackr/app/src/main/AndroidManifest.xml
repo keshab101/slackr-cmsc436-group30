@@ -27,6 +27,7 @@
         <activity android:name=".GroupViewActivity" />
         <activity android:name=".GroupPostsActivity" />
         <activity android:name=".GroupPostCreateActivity" />
+        <activity android:name=".GroupResultViewActivity" />
 
         <!-- For Search Activities -->
         <activity android:name=".searchGroupTypes.SearchDayTime" />
@@ -34,6 +35,7 @@
         <activity android:name=".searchGroupTypes.SearchLearningType" />
         <activity android:name=".searchGroupTypes.SearchSubject"/>
         <activity android:name=".searchGroupTypes.SearchWeekly" />
+        <activity android:name=".searchGroupTypes.SearchActivity" />
 
 
         <meta-data

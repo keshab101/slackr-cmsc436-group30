@@ -21,8 +21,7 @@
         android:id="@+id/search_radioGroup_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:checkedButton="@+id/study_day_clicked">
+        android:layout_marginLeft="10dp" >
 
         <RadioButton
             android:id="@+id/search_radio_button_visual"
@@ -64,8 +63,6 @@
             android:buttonTint="@color/white"
             android:text="@string/study_method_no" />
     </RadioGroup>
-
-
 
     <Button
         android:id="@+id/search_group_learning"
