@@ -26,7 +26,7 @@ class SearchSubject: AppCompatActivity() {
 
         // Get reference
         searchButton = findViewById<View>(R.id.search_group_bySubject) as Button
-        subject = findViewById<View>(R.id.group_subject) as AutoCompleteTextView
+        subject = findViewById<View>(R.id.search_group_subject) as AutoCompleteTextView
 
         subjects = resources.getStringArray(R.array.subjects)
         adapter = ArrayAdapter<String>(

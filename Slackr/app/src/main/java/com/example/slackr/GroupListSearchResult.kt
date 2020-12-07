@@ -9,15 +9,16 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.core.content.ContextCompat.startActivity
 import com.example.slackr.fragments.SearchFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.*
 
-class GroupListSearchResult(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
-    R.layout.search_group_results_listitem, groups) {
+
+class GroupListSearchResult(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(
+    context,
+    R.layout.search_group_results_listitem, groups
+) {
 
     private var groupName: TextView? = null
     private var groupMembers: TextView? = null
@@ -60,20 +61,38 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
         // Get reference and set on click listener
         val joinButton = groupListItem.findViewById<View>(R.id.result_group_join_button) as Button
         joinButton.setOnClickListener {
+            // Check if the user is already in the group
+            databaseRef!!.child("members").addListenerForSingleValueEvent(object :
+                ValueEventListener {
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    if (!snapshot.hasChild(userId.toString())) {
+                        // User is not in the group so they can join
+                        // Add the id of the current user to members HashMap and update the database
+                        members[userId!!] = userId!!
+                        databaseRef!!.child("members").setValue(members)
 
-            // Add the id of the current user to members HashMap and update the database
-            members[userId!!] = userId!!
-            databaseRef!!.child("members").setValue(members)
+                        // Increment membersCount and update the database
+                        membersCountInt++
+                        databaseRef!!.child("groupMembers").setValue(membersCountInt.toString())
 
-            // Increment membersCount and update the database
-            membersCountInt++
-            databaseRef!!.child("groupMembers").setValue(membersCountInt.toString())
+                        Toast.makeText(context, "You Joined $groupName", Toast.LENGTH_SHORT).show()
 
-            Toast.makeText(context, "You Joined to $groupName", Toast.LENGTH_SHORT).show()
+                        val intent = Intent(context, SearchFragment::class.java)
+                        context.startActivity(intent)
+                    } else {
+                        // User is in the group already
+                        Toast.makeText(
+                            context,
+                            "You have already joined this group",
+                            Toast.LENGTH_LONG
+                        ).show()
+                    }
+                }
 
-            //Go back to SearchFragment
-            val intent = Intent(context, SearchFragment::class.java)
-            context.startActivity(intent)
+                override fun onCancelled(error: DatabaseError) {
+                    TODO("Not yet implemented")
+                }
+            })
         }
 
         // Get reference and set on click listener

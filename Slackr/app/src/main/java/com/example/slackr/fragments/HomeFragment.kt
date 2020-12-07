@@ -1,6 +1,8 @@
 package com.example.slackr.fragments
 
+import android.opengl.Visibility
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -30,7 +32,6 @@ class HomeFragment : Fragment() {
 
         groupList = view.findViewById(R.id.group_list)
         emptyTextView = view.findViewById(R.id.empty_group_view)
-        groupList.emptyView = emptyTextView
         groups = ArrayList()
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser!!
@@ -50,9 +51,9 @@ class HomeFragment : Fragment() {
                 var subject: String
 
                 groups.clear()
-
                 for (ds in snapshot.children) {
                     if (ds.child("members").child(user.uid).exists()){
+
                         name = ds.child("groupName").value.toString()
                         groupId = ds.child("groupId").value.toString()
                         membersCount = ds.child("groupMembers").value.toString()
@@ -64,6 +65,9 @@ class HomeFragment : Fragment() {
                         groups.add(group)
                     }
                 }
+                if (groups.isEmpty()) {
+                    groupList.emptyView = emptyTextView
+                }
                 val groupAdapter = this@HomeFragment.activity?.let { GroupList(it, groups) }
                 groupList.adapter = groupAdapter
             }
@@ -72,7 +76,6 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
-
         return view
     }
 

@@ -23,8 +23,8 @@ class SearchDayTime: AppCompatActivity() {
         setContentView(R.layout.search_group_by_studytime)
 
         // Get reference
-        radioGroupTime = findViewById<View>(R.id.search_radioGroup_type) as RadioGroup
-        searchButton = findViewById<View>(R.id.search_search_group) as Button
+        radioGroupTime = findViewById<View>(R.id.search_radioGroup_days) as RadioGroup
+        searchButton = findViewById<View>(R.id.search_group_studyTime) as Button
 
         // Set on click listener
         searchButton!!.setOnClickListener{
@@ -41,8 +41,8 @@ class SearchDayTime: AppCompatActivity() {
 
                 // Create an intent and start SearchActivity
                 val intent = Intent(this@SearchDayTime, SearchActivity::class.java)
-                intent.putExtra(SearchEnvironment.SEARCH_TYPE, "studyTime")
-                intent.putExtra(SearchEnvironment.SELECTED_BUTTON, timeStr)
+                intent.putExtra(SEARCH_TYPE, "studyTime")
+                intent.putExtra(SELECTED_BUTTON, timeStr)
                 startActivity(intent)
 
             } else {

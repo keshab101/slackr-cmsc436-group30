@@ -58,7 +58,7 @@ class LoginActivity : AppCompatActivity() {
 //            progressBar!!.visibility = View.GONE
 //            return
 //        }
-        val testingEmail = "keshab01@umd.edu"
+        val testingEmail = "akeshab301@umd.edu"
         val testingPassword = "cmsc436"
         mAuth!!.signInWithEmailAndPassword(testingEmail, testingPassword)
 

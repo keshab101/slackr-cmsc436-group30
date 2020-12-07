@@ -59,7 +59,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/search_search_group"
+        android:id="@+id/search_env_button"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"

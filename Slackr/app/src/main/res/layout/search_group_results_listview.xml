@@ -14,10 +14,12 @@
         android:id="@+id/empty_results_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="No classes were found, \nsearch with different options"
+        android:gravity="center"
+        android:text="No classes were found, \nSearch with different options"
         android:textColor="@color/red_primary"
         android:fontFamily="sans-serif"
         android:textAlignment="center"
+        android:visibility="gone"
         android:textSize="20sp"/>
 
 </LinearLayout>
