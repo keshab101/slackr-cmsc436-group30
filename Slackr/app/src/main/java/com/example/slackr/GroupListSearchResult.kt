@@ -57,6 +57,7 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
         databaseRef = FirebaseDatabase.getInstance().getReference("groups").child(id!!)
         var membersCountInt = Integer.parseInt(membersCount)
 
+        // Get reference and set on click listener
         val joinButton = groupListItem.findViewById<View>(R.id.result_group_join_button) as Button
         joinButton.setOnClickListener {
 
@@ -75,6 +76,7 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
             context.startActivity(intent)
         }
 
+        // Get reference and set on click listener
         val viewButton = groupListItem.findViewById<View>(R.id.result_group_view_button) as Button
         viewButton.setOnClickListener {
 
