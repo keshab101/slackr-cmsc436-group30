@@ -6,7 +6,7 @@
     android:gravity="center">
 
     <ListView
-        android:id="@+id/group_list"
+        android:id="@+id/result_group_list"
         android:layout_height="match_parent"
         android:layout_width="wrap_content" />
 

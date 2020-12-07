@@ -7,7 +7,7 @@
     android:padding="16dp">
 
     <ImageView
-        android:id="@+id/group_pic"
+        android:id="@+id/search_group_pic"
         android:layout_width="70dp"
         android:layout_height="70dp"
         android:src="@drawable/group_icon"
@@ -21,7 +21,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/group_name"
+            android:id="@+id/search_group_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:fontFamily="sans-serif"
@@ -31,7 +31,7 @@
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
 
         <TextView
-            android:id="@+id/group_members"
+            android:id="@+id/search_group_members"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="@string/test_group_members"
@@ -40,7 +40,7 @@
     </LinearLayout>
 
     <Button
-        android:id="@+id/group_view_button"
+        android:id="@+id/search_group_join_button"
         android:layout_width="80dp"
         android:layout_height="40dp"
         android:layout_marginTop="10dp"

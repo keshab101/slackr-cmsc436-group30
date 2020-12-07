@@ -13,33 +13,40 @@ import com.example.slackr.Validators
 
 class SearchDayTime: AppCompatActivity() {
 
-    private lateinit var studyTime: RadioGroup
-    private lateinit var searchButton: Button
-    private lateinit var timeSelected: RadioButton
+    private var radioGroupTime: RadioGroup? = null
+    private var radioButtonTime: RadioButton? = null
+    private var timeStr: String? = null
+    private var searchButton: Button? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.search_group_by_studytime)
 
-        studyTime = findViewById(R.id.search_radioGroup_days)
-        searchButton = findViewById(R.id.search_group_studyTime)
+        // Get reference
+        radioGroupTime = findViewById<View>(R.id.search_radioGroup_type) as RadioGroup
+        searchButton = findViewById<View>(R.id.search_search_group) as Button
 
-        val timeSelectedId = studyTime!!.checkedRadioButtonId
-        var timeStr = ""
-        if (timeSelectedId != 1) {
-            timeSelected = findViewById<View>(timeSelectedId) as RadioButton
-            timeStr = timeSelected!!.text.toString()
-        }
+        // Set on click listener
+        searchButton!!.setOnClickListener{
 
-        searchButton.setOnClickListener {
+            // Get the ID
+            val selectedId = radioGroupTime!!.checkedRadioButtonId
 
-            val validator = Validators()
-            if (validator.validText(timeStr)) {
-//                val intent = Intent(applicationContext, @SearchActivity::class.java)
-//                intent.putExtra(SEARCH_TYPE, "studyTime")
-//                intent.putExtra(SELECTED_BUTTON, timeStr)
+            // If one of the button is selected
+            if (selectedId != -1) {
+
+                // Get the string value of the selected radio button
+                radioButtonTime = findViewById<View>(selectedId) as RadioButton
+                timeStr = radioButtonTime!!.text.toString()
+
+                // Create an intent and start SearchActivity
+                val intent = Intent(this@SearchDayTime, SearchActivity::class.java)
+                intent.putExtra(SearchEnvironment.SEARCH_TYPE, "studyTime")
+                intent.putExtra(SearchEnvironment.SELECTED_BUTTON, timeStr)
+                startActivity(intent)
+
             } else {
-                Toast.makeText(applicationContext,"Please select a time", Toast.LENGTH_SHORT).show()
+                Toast.makeText(applicationContext, "Select One of the Options", Toast.LENGTH_SHORT).show()
             }
         }
     }

@@ -21,8 +21,7 @@
         android:id="@+id/search_radioGroup_weekdays"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:checkedButton="@+id/study_day_clicked">
+        android:layout_marginLeft="10dp" >
 
         <RadioButton
             android:id="@+id/search_radio_button_first"

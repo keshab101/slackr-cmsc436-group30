@@ -34,6 +34,7 @@
         <activity android:name=".searchGroupTypes.SearchLearningType" />
         <activity android:name=".searchGroupTypes.SearchSubject"/>
         <activity android:name=".searchGroupTypes.SearchWeekly" />
+        <activity android:name=".searchGroupTypes.SearchActivity" />
 
 
         <meta-data
