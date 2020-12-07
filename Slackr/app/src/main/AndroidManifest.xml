@@ -12,20 +12,22 @@
         android:screenOrientation="portrait"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".GroupViewActivity"></activity>
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- adding activities in order -->
+        </activity>
+        <!-- adding activities in order -->
         <activity android:name=".MainActivity" />
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomePage" />
+        <activity android:name=".GroupViewActivity" />
         <activity android:name=".GroupPostsActivity" />
         <activity android:name=".GroupPostCreateActivity" />
+        <activity android:name=".searchGroupTypes.SearchSubject"/>
 
         <meta-data
             android:name="preloaded_fonts"
