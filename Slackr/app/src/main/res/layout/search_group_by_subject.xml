@@ -8,7 +8,6 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/study_habits_day"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -19,7 +18,7 @@
         android:textSize="30sp" />
 
     <AutoCompleteTextView
-        android:id="@+id/group_subject"
+        android:id="@+id/search_group_subject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="15dp"
@@ -33,14 +32,13 @@
         android:textSize="20sp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/search_group_bySubject"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="80dp"
         android:layout_marginRight="80dp"
         android:layout_marginBottom="40dp"
-        android:background="@drawable/round_views"
         android:text="Search" />
 
 

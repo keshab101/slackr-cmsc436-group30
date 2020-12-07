@@ -8,7 +8,6 @@
     android:gravity="center">
 
         <TextView
-            android:id="@+id/study_habits_day"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="30dp"
@@ -19,13 +18,13 @@
             android:textSize="30sp" />
 
         <RadioGroup
-            android:id="@+id/radioGroup_days"
+            android:id="@+id/search_radioGroup_days"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp">
 
             <RadioButton
-                android:id="@+id/radio_button_morning"
+                android:id="@+id/search_radio_button_morning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -33,7 +32,7 @@
                 android:text="@string/study_time_morning" />
 
             <RadioButton
-                android:id="@+id/radio_button_afternoon"
+                android:id="@+id/search_radio_button_afternoon"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -41,7 +40,7 @@
                 android:text="@string/study_time_afternoon" />
 
             <RadioButton
-                android:id="@+id/radio_button_nighttime"
+                android:id="@+id/search_radio_button_nighttime"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -49,7 +48,7 @@
                 android:text="@string/study_time_nighttime" />
 
             <RadioButton
-                android:id="@+id/radio_button_no_time"
+                android:id="@+id/search_radio_button_no_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textColor="@color/white"
@@ -58,7 +57,7 @@
         </RadioGroup>
 
         <Button
-            android:id="@+id/login"
+            android:id="@+id/search_group_studyTime"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="40dp"

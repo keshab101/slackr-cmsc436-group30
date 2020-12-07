@@ -8,7 +8,6 @@
     android:gravity="center">
 
     <TextView
-        android:id="@+id/study_habits_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="30dp"
@@ -19,14 +18,14 @@
         android:textSize="30sp" />
 
     <RadioGroup
-        android:id="@+id/radioGroup_method"
+        android:id="@+id/search_radioGroup_method"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:checkedButton="@+id/study_day_clicked">
 
         <RadioButton
-            android:id="@+id/radio_button_visual"
+            android:id="@+id/search_radio_button_visual"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -34,7 +33,7 @@
             android:text="@string/study_method_visual" />
 
         <RadioButton
-            android:id="@+id/radio_button_auditory"
+            android:id="@+id/search_radio_button_auditory"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -42,7 +41,7 @@
             android:text="@string/study_method_auditory" />
 
         <RadioButton
-            android:id="@+id/radio_button_reading"
+            android:id="@+id/search_radio_button_reading"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -50,7 +49,7 @@
             android:text="@string/study_method_reading" />
 
         <RadioButton
-            android:id="@+id/radio_button_kinesthetic"
+            android:id="@+id/search_radio_button_kinesthetic"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -58,7 +57,7 @@
             android:text="@string/study_method_kinesthetic" />
 
         <RadioButton
-            android:id="@+id/radio_button_no_method"
+            android:id="@+id/search_radio_button_no_method"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
@@ -69,7 +68,7 @@
 
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/search_group_learning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="40dp"
