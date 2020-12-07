@@ -9,16 +9,14 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.example.slackr.fragments.SearchFragment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
 
-
 class GroupListSearchResult(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(
-    context,
-    R.layout.search_group_results_listitem, groups
-) {
+    context, R.layout.search_group_results_listitem, groups) {
 
     private var groupName: TextView? = null
     private var groupMembers: TextView? = null
@@ -75,15 +73,13 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
                         membersCountInt++
                         databaseRef!!.child("groupMembers").setValue(membersCountInt.toString())
 
-                        Toast.makeText(context, "You Joined $groupName", Toast.LENGTH_SHORT).show()
+                        Toast.makeText(context, "You Joined $name", Toast.LENGTH_SHORT).show()
 
-                        val intent = Intent(context, SearchFragment::class.java)
-                        context.startActivity(intent)
                     } else {
                         // User is in the group already
                         Toast.makeText(
                             context,
-                            "You have already joined this group",
+                            "You Have Already Joined This Group",
                             Toast.LENGTH_LONG
                         ).show()
                     }

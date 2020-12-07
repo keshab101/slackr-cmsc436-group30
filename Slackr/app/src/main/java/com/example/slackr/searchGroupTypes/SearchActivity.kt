@@ -60,7 +60,6 @@ class SearchActivity: AppCompatActivity() {
                                 location = snap.child("groupLocation").value.toString()
                                 subject = snap.child("groupSubject").value.toString()
 
-                                Log.i(TAG, "group's name: $name")
                                 group = Group(groupId, name, membersCount, members, location, description, subject)
                                 groups.add(group)
 
