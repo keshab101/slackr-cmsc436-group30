@@ -16,11 +16,11 @@ class GroupResultViewActivity : AppCompatActivity() {
         setContentView(R.layout.activity_group_result_view)
 
         // Get reference
-        groupName = findViewById(R.id.group_view_name)
-        groupSubject = findViewById(R.id.group_view_subject)
-        groupDescription = findViewById(R.id.group_view_description)
-        groupLocation = findViewById(R.id.group_view_location)
-        groupMember = findViewById(R.id.group_view_group_members)
+        groupName = findViewById(R.id.group_result_view_name)
+        groupSubject = findViewById(R.id.group_result_view_subject)
+        groupDescription = findViewById(R.id.group_result_view_description)
+        groupLocation = findViewById(R.id.group_result_view_location)
+        groupMember = findViewById(R.id.group_result_view_group_members)
 
         // Get necessary information from the intent
         groupName!!.text = intent.getStringExtra("GroupName")

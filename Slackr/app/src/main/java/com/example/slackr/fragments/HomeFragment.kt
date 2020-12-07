@@ -39,7 +39,6 @@ class HomeFragment : Fragment() {
 
 
         val groupDatabase = fireDatabase.getReference("groups")
-        emptyTextView.visibility = View.GONE
         groupDatabase.addValueEventListener(object: ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 var group: Group
@@ -66,6 +65,9 @@ class HomeFragment : Fragment() {
                         groups.add(group)
                     }
                 }
+                if (groups.isEmpty()) {
+                    groupList.emptyView = emptyTextView
+                }
                 val groupAdapter = this@HomeFragment.activity?.let { GroupList(it, groups) }
                 groupList.adapter = groupAdapter
             }
@@ -74,9 +76,6 @@ class HomeFragment : Fragment() {
                 TODO("Not yet implemented")
             }
         })
-        // If the user isn't in any groups in the database
-        groupList.emptyView = emptyTextView
-
         return view
     }
 

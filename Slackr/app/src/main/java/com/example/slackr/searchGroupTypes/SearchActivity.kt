@@ -65,6 +65,9 @@ class SearchActivity: AppCompatActivity() {
                                 groups.add(group)
 
                                 // Make the listView display
+                                if (groups.isEmpty()) {
+                                    groupList.emptyView = emptyTextView
+                                }
                                 val groupResultAdapter = GroupListSearchResult(this@SearchActivity, groups)
                                 groupList.adapter = groupResultAdapter
                             }
@@ -83,7 +86,6 @@ class SearchActivity: AppCompatActivity() {
                 TODO("Not yet implemented")
             }
         })
-        groupList.emptyView = emptyTextView
     }
 
     companion object {

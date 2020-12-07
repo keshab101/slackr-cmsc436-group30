@@ -58,14 +58,14 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
         databaseRef = FirebaseDatabase.getInstance().getReference("groups").child(id!!)
         var membersCountInt = Integer.parseInt(membersCount)
 
+        // Get reference and set on click listener
         val joinButton = groupListItem.findViewById<View>(R.id.result_group_join_button) as Button
         joinButton.setOnClickListener {
-
             // Check if the user is already in the group
-            databaseRef!!.child("members").addListenerForSingleValueEvent(object : ValueEventListener {
+            databaseRef!!.child("members").addListenerForSingleValueEvent(object :
+                ValueEventListener {
                 override fun onDataChange(snapshot: DataSnapshot) {
                     if (!snapshot.hasChild(userId.toString())) {
-
                         // User is not in the group so they can join
                         // Add the id of the current user to members HashMap and update the database
                         members[userId!!] = userId!!
@@ -77,34 +77,38 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
 
                         Toast.makeText(context, "You Joined $groupName", Toast.LENGTH_SHORT).show()
 
-                        //Go back to SearchFragment
                         val intent = Intent(context, SearchFragment::class.java)
                         context.startActivity(intent)
                     } else {
                         // User is in the group already
-                        Toast.makeText(context, "You have already joined this group", Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            context,
+                            "You have already joined this group",
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
-
                 }
+
                 override fun onCancelled(error: DatabaseError) {
                     TODO("Not yet implemented")
                 }
             })
         }
 
-//        val viewButton = groupListItem.findViewById<View>(R.id.result_group_join_button) as Button
-//        viewButton.setOnClickListener {
-//
-//            val resultViewIntent = Intent(context, GroupResultViewActivity::class.java)
-//            resultViewIntent.putExtra("GroupName", name)
-//            resultViewIntent.putExtra("GroupId", id)
-//            resultViewIntent.putExtra("GroupDescription", description)
-//            resultViewIntent.putExtra("GroupLocation", location)
-//            resultViewIntent.putExtra("GroupSubject", subject)
-//            resultViewIntent.putExtra("GroupMembersCount", membersCount)
-//
-//            context.startActivity(resultViewIntent)
-//        }
+        // Get reference and set on click listener
+        val viewButton = groupListItem.findViewById<View>(R.id.result_group_view_button) as Button
+        viewButton.setOnClickListener {
+
+            val resultViewIntent = Intent(context, GroupResultViewActivity::class.java)
+            resultViewIntent.putExtra("GroupName", name)
+            resultViewIntent.putExtra("GroupId", id)
+            resultViewIntent.putExtra("GroupDescription", description)
+            resultViewIntent.putExtra("GroupLocation", location)
+            resultViewIntent.putExtra("GroupSubject", subject)
+            resultViewIntent.putExtra("GroupMembersCount", membersCount)
+
+            context.startActivity(resultViewIntent)
+        }
 
         return groupListItem
     }
