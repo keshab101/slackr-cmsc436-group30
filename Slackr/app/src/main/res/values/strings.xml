@@ -14,7 +14,8 @@
     <string name="update">Update</string>
     <string name="front_description1">Learn and achieve more together.</string>
     <string name="front_description2">Create and find study groups!</string>
-    <string name="sign_out">Sign Out</string>
+    <string name="sign_out">SIGN OUT</string>
+    <string name="edit_profile">EDIT PROFILE</string>
     <string name="study_habits">Study Habits</string>
     <string name="study_habits_day">Study Day</string>
     <string name="study_habits_time">Study Time</string>

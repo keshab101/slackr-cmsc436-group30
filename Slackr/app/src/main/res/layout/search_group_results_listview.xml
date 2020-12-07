@@ -1,9 +1,8 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
-    android:layout_width="fill_parent"
-    android:layout_height="fill_parent"
-    android:gravity="center">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ListView
         android:id="@+id/result_group_list"
@@ -14,12 +13,11 @@
         android:id="@+id/empty_results_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_marginVertical="250dp"
         android:text="No classes were found, \nSearch with different options"
         android:textColor="@color/red_primary"
         android:fontFamily="sans-serif"
         android:textAlignment="center"
-        android:visibility="gone"
         android:textSize="20sp"/>
 
 </LinearLayout>

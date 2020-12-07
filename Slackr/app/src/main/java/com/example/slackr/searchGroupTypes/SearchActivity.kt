@@ -3,6 +3,7 @@ package com.example.slackr.searchGroupTypes
 import android.os.Bundle
 import android.renderscript.Sampler
 import android.util.Log
+import android.view.View
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -67,6 +68,8 @@ class SearchActivity: AppCompatActivity() {
                                 // Make the listView display
                                 if (groups.isEmpty()) {
                                     groupList.emptyView = emptyTextView
+                                } else {
+                                    emptyTextView.visibility = View.GONE
                                 }
                                 val groupResultAdapter = GroupListSearchResult(this@SearchActivity, groups)
                                 groupList.adapter = groupResultAdapter
