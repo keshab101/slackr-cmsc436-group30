@@ -65,7 +65,7 @@
             android:buttonTint="@color/white"
             android:text="@string/study_method_no" />
     </RadioGroup>
-    
+
 
 
     <Button

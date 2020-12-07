@@ -12,7 +12,7 @@ class SearchLearningType: AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-//        setContentView(R.layout.search_by_learning_type)
+        setContentView(R.layout.search_group_by_learning_type)
 
     }
 
