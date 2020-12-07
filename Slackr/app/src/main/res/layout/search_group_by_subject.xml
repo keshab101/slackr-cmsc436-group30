@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/splash_color"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/study_habits_day"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="30dp"
+        android:gravity="center"
+        android:fontFamily="sans-serif"
+        android:text="Search Groups By Subject"
+        android:textColor="@color/white"
+        android:textSize="30sp" />
+
+    <AutoCompleteTextView
+        android:id="@+id/group_subject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:layout_marginBottom="20dp"
+        android:completionHint="Select a Subject"
+        android:completionThreshold="1"
+        android:dropDownAnchor="@id/group_subject"
+        android:dropDownHeight="150dp"
+        android:hint="Type a subject"
+        android:paddingBottom="16dp"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="80dp"
+        android:layout_marginRight="80dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/round_views"
+        android:text="Search" />
+
+
+</androidx.appcompat.widget.LinearLayoutCompat>
