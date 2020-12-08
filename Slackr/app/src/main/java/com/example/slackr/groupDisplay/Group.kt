@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupDisplay
 
 import com.google.firebase.database.DatabaseReference
 import javax.security.auth.Subject

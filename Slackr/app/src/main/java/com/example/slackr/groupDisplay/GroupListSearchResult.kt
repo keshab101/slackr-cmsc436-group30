@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupDisplay
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -9,8 +9,7 @@ import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
-import com.example.slackr.fragments.SearchFragment
+import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -86,7 +85,7 @@ class GroupListSearchResult(private val context: Activity, private var groups: L
                 }
 
                 override fun onCancelled(error: DatabaseError) {
-                    TODO("Not yet implemented")
+                    // Nothing to implement
                 }
             })
         }

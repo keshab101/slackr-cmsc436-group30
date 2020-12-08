@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupPosts
 
 import android.os.Bundle
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.EditText
 import android.widget.ProgressBar
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference

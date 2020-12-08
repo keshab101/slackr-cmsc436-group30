@@ -1,8 +1,9 @@
-package com.example.slackr
+package com.example.slackr.groupDisplay
 
 import android.os.Bundle
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
+import com.example.slackr.R
 
 class GroupResultViewActivity : AppCompatActivity() {
     private var groupName: TextView? = null

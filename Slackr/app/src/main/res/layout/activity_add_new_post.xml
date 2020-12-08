@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:padding="16dp"
-    tools:context='.GroupPostCreateActivity'
+    tools:context='.groupPosts.GroupPostCreateActivity'
     android:background="@color/splash_color">
 
     <LinearLayout

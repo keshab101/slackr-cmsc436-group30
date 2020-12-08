@@ -6,6 +6,7 @@ import android.widget.Button
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 
+/** Some of the code in this class was derived from Lab-07- Firebase*/
 class MainActivity: AppCompatActivity() {
 
     private var registerBtn: Button? = null

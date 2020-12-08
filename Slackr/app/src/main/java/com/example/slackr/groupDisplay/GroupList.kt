@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupDisplay
 
 import android.annotation.SuppressLint
 import android.app.Activity
@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.TextView
+import com.example.slackr.R
+import com.example.slackr.groupPosts.GroupPostsActivity
 
 class GroupList(private val context: Activity, private var groups: List<Group>) : ArrayAdapter<Group>(context,
     R.layout.group_listitem, groups) {

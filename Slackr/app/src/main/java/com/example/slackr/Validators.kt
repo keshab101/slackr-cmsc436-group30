@@ -1,5 +1,6 @@
 package com.example.slackr
 
+/** Some of the code was derived from Lab 07- Firebase App*/
 class Validators {
 
     fun validUserName(name: String?) : Boolean {

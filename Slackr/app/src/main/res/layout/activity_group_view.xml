@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/scrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fillViewport="true">
 
-    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    <RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -37,6 +40,9 @@
             android:paddingTop="10dp"
             android:paddingBottom="30dp">
 
+            <!-- Got ellipsize from -> -->
+            <!-- https://stackoverflow.com/questions/10748796/android-how-to-limit-width-of-textview-and-add-three-dots-at-the-end-of-text-->
+
             <TextView
                 android:id="@+id/group_view_name"
                 android:layout_width="wrap_content"
@@ -45,6 +51,9 @@
                 android:layout_marginTop="15sp"
                 android:fontFamily="sans-serif"
                 android:text="Group Name"
+                android:maxLines="2"
+                android:textAlignment="center"
+                android:ellipsize="end"
                 android:textColor="@color/black"
                 android:textSize="32sp" />
 

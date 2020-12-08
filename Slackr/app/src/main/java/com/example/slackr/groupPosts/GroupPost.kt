@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupPosts
 
 data class GroupPost (
     val pId: String ="",

@@ -13,24 +13,26 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
+
+/** Some of the code in this class was derived from Lab-07- Firebase*/
 class LoginActivity : AppCompatActivity() {
 
     //Login portion of the app
-    private var mDatabaseReference: DatabaseReference? = null
-    private var mDatabase: FirebaseDatabase? = null
+    private var usersDB: DatabaseReference? = null
+    private var firebaseDatabase: FirebaseDatabase? = null
     private var userEmail: EditText? = null
     private var userPassword: EditText? = null
     private var loginBtn: Button? = null
     private var progressBar: ProgressBar? = null
-    private var mAuth: FirebaseAuth? = null
+    private var firebaseAuth: FirebaseAuth? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
 
-        mDatabase = FirebaseDatabase.getInstance()
-        mDatabaseReference = mDatabase!!.reference.child("Users")
-        mAuth = FirebaseAuth.getInstance()
+        firebaseDatabase = FirebaseDatabase.getInstance()
+        usersDB= firebaseDatabase!!.reference.child("users")
+        firebaseAuth = FirebaseAuth.getInstance()
 
         userEmail = findViewById(R.id.email)
         userPassword = findViewById(R.id.password)
@@ -48,26 +50,23 @@ class LoginActivity : AppCompatActivity() {
         val password: String = userPassword?.text.toString()
 
 
-//        if (TextUtils.isEmpty(email)) {
-//            Toast.makeText(applicationContext, "Please enter email...", Toast.LENGTH_LONG).show()
-//            progressBar!!.visibility = View.GONE
-//            return
-//        }
-//        if (TextUtils.isEmpty(password)) {
-//            Toast.makeText(applicationContext, "Please enter password!", Toast.LENGTH_LONG).show()
-//            progressBar!!.visibility = View.GONE
-//            return
-//        }
-        val testingEmail = "akeshab301@umd.edu"
-        val testingPassword = "cmsc436"
-        mAuth!!.signInWithEmailAndPassword(testingEmail, testingPassword)
+        if (TextUtils.isEmpty(email)) {
+            Toast.makeText(applicationContext, "Please enter the email.", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
+            return
+        }
+        if (TextUtils.isEmpty(password)) {
+            Toast.makeText(applicationContext, "Please enter the password!", Toast.LENGTH_LONG).show()
+            progressBar!!.visibility = View.GONE
+            return
+        }
 
-        //mAuth!!.signInWithEmailAndPassword(email, password)
+        firebaseAuth!!.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener { task ->
                 progressBar?.visibility = View.GONE
                 if(task.isSuccessful){
                     val intent = Intent(this@LoginActivity, HomePage::class.java)
-                    intent.putExtra(USER_ID, mAuth!!.uid)
+                    intent.putExtra(USER_ID, firebaseAuth!!.uid)
                     startActivity(intent)
                 } else {
                     Toast.makeText(

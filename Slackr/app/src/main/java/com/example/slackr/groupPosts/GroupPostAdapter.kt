@@ -1,14 +1,15 @@
-package com.example.slackr
+package com.example.slackr.groupPosts
 
 import android.text.format.DateFormat
-import android.util.Log
 import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import com.example.slackr.R
 import java.util.*
 
+/** Some of the code was derived from Lab 07- Firebase App*/
 internal class GroupPostAdapter(
     private val mPosts: List<GroupPost>,
     private val mRowLayout: Int

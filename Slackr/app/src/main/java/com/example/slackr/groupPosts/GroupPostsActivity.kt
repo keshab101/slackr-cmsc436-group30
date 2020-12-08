@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.groupPosts
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,9 @@ import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.*
@@ -53,7 +53,9 @@ class GroupPostsActivity : AppCompatActivity() {
                 for (ds in snapshot.child("posts").children) {
                     post = ds.getValue(GroupPost::class.java)
                     groupPosts.add(post!!)
-                    mRecyclerView.adapter = GroupPostAdapter(groupPosts, R.layout.single_group_post_view)
+                    mRecyclerView.adapter = GroupPostAdapter(groupPosts,
+                        R.layout.single_group_post_view
+                    )
                 }
             }
             override fun onCancelled(error: DatabaseError) {
@@ -92,7 +94,7 @@ class GroupPostsActivity : AppCompatActivity() {
                         startActivity(intent)
                     }
                     override fun onCancelled(error: DatabaseError) {
-                        TODO("Not yet implemented")
+                        // Nothing to implement
                     }
                 })
                 true

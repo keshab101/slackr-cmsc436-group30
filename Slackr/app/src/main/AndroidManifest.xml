@@ -24,10 +24,10 @@
         <activity android:name=".RegistrationActivity" />
         <activity android:name=".LoginActivity" />
         <activity android:name=".HomePage" />
-        <activity android:name=".GroupViewActivity" />
-        <activity android:name=".GroupPostsActivity" />
-        <activity android:name=".GroupPostCreateActivity" />
-        <activity android:name=".GroupResultViewActivity" />
+        <activity android:name=".groupDisplay.GroupViewActivity" />
+        <activity android:name=".groupPosts.GroupPostsActivity" />
+        <activity android:name=".groupPosts.GroupPostCreateActivity" />
+        <activity android:name=".groupDisplay.GroupResultViewActivity" />
         <activity android:name=".EditProfile" />
 
         <!-- For Search Activities -->

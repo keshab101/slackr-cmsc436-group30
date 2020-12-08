@@ -1,4 +1,4 @@
-package com.example.slackr
+package com.example.slackr.searchGroupTypes
 
 class StudyHabit {
 

@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
         val userId = currentUser!!.uid
         databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId)
 
-        databaseRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
+        databaseRef!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 userNameTop!!.text = snapshot.child("userName").value.toString()
@@ -53,7 +53,7 @@ class SettingsFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+               // Nothing to implement
             }
         })
 
@@ -80,10 +80,10 @@ class SettingsFragment : Fragment() {
                 true
             }
             MENU_SIGN_OUT -> {
-                firebaseAuth.signOut()
                 val intent = Intent(context, MainActivity::class.java)
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
+                firebaseAuth.signOut()
                 true
             }
             else -> super.onOptionsItemSelected(item)
