@@ -12,7 +12,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.ktx.Firebase
 
 class EditProfile: AppCompatActivity() {
-
+    
     private lateinit var name: EditText
     private lateinit var email: EditText
     private lateinit var password: EditText

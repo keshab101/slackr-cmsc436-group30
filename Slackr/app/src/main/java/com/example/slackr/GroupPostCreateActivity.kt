@@ -83,6 +83,7 @@ class GroupPostCreateActivity: AppCompatActivity()  {
                 postTitle.text.clear()
                 postDesc.text.clear()
                 Toast.makeText(applicationContext, "Post Successfully Created", Toast.LENGTH_SHORT).show()
+                onBackPressed()
             } else {
                 Toast.makeText(applicationContext, "Failed to create the post", Toast.LENGTH_SHORT).show()
             }

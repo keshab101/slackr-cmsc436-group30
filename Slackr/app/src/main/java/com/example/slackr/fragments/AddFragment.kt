@@ -1,5 +1,6 @@
 package com.example.slackr.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -7,10 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
-import com.example.slackr.Group
-import com.example.slackr.R
-import com.example.slackr.StudyHabit
-import com.example.slackr.Validators
+import com.example.slackr.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -144,18 +142,21 @@ class AddFragment : Fragment() {
                             if (taskGroup.isSuccessful && taskHabit.isSuccessful) {
 
                                 // Clear out text fields after creating a group
-                                groupName!!.text.clear()
-                                meetingLocation!!.text.clear()
-                                description!!.text.clear()
-                                subject!!.text.clear()
+                               // groupName!!.text.clear()
+                               // meetingLocation!!.text.clear()
+                               // description!!.text.clear()
+                               // subject!!.text.clear()
 
                                 // Reset radio groups
-                                radioGroupDay!!.clearCheck()
-                                radioGroupTime!!.clearCheck()
-                                radioGroupType!!.clearCheck()
-                                radioGroupMethod!!.clearCheck()
+                               // radioGroupDay!!.clearCheck()
+                               // radioGroupTime!!.clearCheck()
+                               // radioGroupType!!.clearCheck()
+                               // radioGroupMethod!!.clearCheck()
 
+                                val intent = Intent(context, HomePage::class.java)
+                                startActivity(intent)
                                 Toast.makeText(context, "Group Successfully Created", Toast.LENGTH_SHORT).show()
+
                             } else {
                                 Toast.makeText(context, "Failed to Create the Group", Toast.LENGTH_SHORT).show()
                             }
