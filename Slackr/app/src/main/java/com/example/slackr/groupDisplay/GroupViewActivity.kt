@@ -115,6 +115,8 @@ class GroupViewActivity : AppCompatActivity() {
             val groupId = intent.getStringExtra("GroupId").toString()
             val groupName = intent.getStringExtra("GroupName").toString()
             val databaseRef = FirebaseDatabase.getInstance().getReference("groups").child(groupId)
+            val databaseGroup = FirebaseDatabase.getInstance().getReference("groups")
+            val databaseHabits = FirebaseDatabase.getInstance().getReference("studyHabits")
             var membersCountInt = Integer.parseInt(membersCount!!)
 
             databaseRef.child("members").addListenerForSingleValueEvent(object :
@@ -131,6 +133,12 @@ class GroupViewActivity : AppCompatActivity() {
                     // Decrement membersCount and update the database
                     membersCountInt--
                     databaseRef.child("groupMembers").setValue(membersCountInt.toString())
+
+                    // Remove the group and study habit if there is no member
+                    if (membersCountInt == 0) {
+                        databaseGroup.child(groupId).removeValue()
+                        databaseHabits.child(groupId).removeValue()
+                    }
 
                     Toast.makeText(applicationContext, "You Left $groupName", Toast.LENGTH_SHORT).show()
 

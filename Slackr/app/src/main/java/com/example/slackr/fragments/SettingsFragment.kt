@@ -81,6 +81,9 @@ class SettingsFragment : Fragment() {
             }
             MENU_SIGN_OUT -> {
                 val intent = Intent(context, MainActivity::class.java)
+
+                // Looked up this
+                // https://medium.com/swlh/truly-understand-tasks-and-back-stack-intent-flags-of-activity-2a137c401eca
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
                 firebaseAuth.signOut()
