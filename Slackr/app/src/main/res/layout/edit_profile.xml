@@ -25,6 +25,7 @@
         android:text="UserName"/>
 
     <EditText
+        android:id="@+id/edit_userName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -44,6 +45,7 @@
         android:text="Password"/>
 
     <EditText
+        android:id="@+id/edit_userPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -63,6 +65,7 @@
         android:text="Email"/>
 
     <EditText
+        android:id="@+id/edit_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -82,6 +85,7 @@
         android:text="Social Media"/>
 
     <EditText
+        android:id="@+id/edit_socialMediaAccount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"

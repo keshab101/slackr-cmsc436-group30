@@ -28,7 +28,7 @@ class MainActivity: AppCompatActivity() {
         }
 
     }
-    
+
 
     override fun onBackPressed() {
         //Left empty so that users can't go back to the splash activity
