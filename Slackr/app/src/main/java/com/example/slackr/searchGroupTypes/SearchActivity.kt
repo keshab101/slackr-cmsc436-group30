@@ -46,7 +46,7 @@ class SearchActivity: AppCompatActivity() {
                         var group: Group
                         var name: String
                         var membersCount: String
-                        var members: HashMap<String, String>
+                        var members: HashMap<String, String> = HashMap()
                         var description: String
                         var location: String
                         var subject: String
