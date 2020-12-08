@@ -1,0 +1,16 @@
+.hTitle {
+    text-align: center;
+    margin-top: 30px;
+  }
+
+  body, .container, .row, .col, .list-group, .list-group-item{
+    background: #4965b6;
+    color: white;
+  }
+  a, a:hover{
+    color: white;
+  }
+  hr {
+    background: #333;
+    height: 5px;
+  }

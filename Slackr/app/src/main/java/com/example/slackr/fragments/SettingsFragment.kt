@@ -40,7 +40,7 @@ class SettingsFragment : Fragment() {
         val userId = currentUser!!.uid
         databaseRef = FirebaseDatabase.getInstance().getReference("users").child(userId)
 
-        databaseRef!!.addListenerForSingleValueEvent(object : ValueEventListener {
+        databaseRef!!.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
 
                 userNameTop!!.text = snapshot.child("userName").value.toString()
