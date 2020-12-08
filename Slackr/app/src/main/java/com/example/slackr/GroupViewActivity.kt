@@ -136,8 +136,7 @@ class GroupViewActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "You Left $groupName", Toast.LENGTH_SHORT).show()
 
                     // Go back to HomePage
-                    val intent = Intent(this@GroupViewActivity, HomePage::class.java)
-                    startActivity(intent)
+                    onBackPressed()
                 }
 
                 override fun onCancelled(error: DatabaseError) {
