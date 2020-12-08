@@ -1,19 +1,14 @@
 package com.example.slackr.fragments
 
-import android.content.Intent
-import android.opengl.Visibility
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ListView
 import android.widget.TextView
-import android.widget.Toast
-import com.example.slackr.Group
-import com.example.slackr.GroupList
-import com.example.slackr.LoginActivity
+import com.example.slackr.groupDisplay.Group
+import com.example.slackr.groupDisplay.GroupList
 import com.example.slackr.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
@@ -34,6 +29,7 @@ class HomeFragment : Fragment() {
         val view = inflater.inflate(R.layout.fragment_home, container, false)
 
         groupList = view.findViewById(R.id.group_list)
+
         emptyTextView = view.findViewById(R.id.empty_group_view)
         groups = ArrayList()
         firebaseAuth = FirebaseAuth.getInstance()
@@ -77,6 +73,7 @@ class HomeFragment : Fragment() {
 
             override fun onCancelled(error: DatabaseError) {
         //        Toast.makeText(context, "Failed to load data", Toast.LENGTH_LONG).show()
+                // Nothing to implement
             }
         })
         return view

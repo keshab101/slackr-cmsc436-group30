@@ -2,13 +2,14 @@ package com.example.slackr.fragments
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import com.example.slackr.*
+import com.example.slackr.groupDisplay.Group
+import com.example.slackr.searchGroupTypes.StudyHabit
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
@@ -54,7 +55,7 @@ class AddFragment : Fragment() {
         subjects = resources.getStringArray(R.array.subjects)
         adapter = ArrayAdapter<String>(
             activity!!.applicationContext,
-            R.layout.cg_custom_subject_item, R.id.text_view_list_item, subjects!!
+            R.layout.subject_dropdown_items, R.id.text_view_list_item, subjects!!
         )
         subject!!.setAdapter(adapter)
 
@@ -140,18 +141,6 @@ class AddFragment : Fragment() {
                     // Store the study habit into the database
                     databaseRefHabit!!.child(groupId).setValue(newStudyHabit).addOnCompleteListener { taskHabit ->
                             if (taskGroup.isSuccessful && taskHabit.isSuccessful) {
-
-                                // Clear out text fields after creating a group
-                               // groupName!!.text.clear()
-                               // meetingLocation!!.text.clear()
-                               // description!!.text.clear()
-                               // subject!!.text.clear()
-
-                                // Reset radio groups
-                               // radioGroupDay!!.clearCheck()
-                               // radioGroupTime!!.clearCheck()
-                               // radioGroupType!!.clearCheck()
-                               // radioGroupMethod!!.clearCheck()
 
                                 val intent = Intent(context, HomePage::class.java)
                                 startActivity(intent)

@@ -37,6 +37,8 @@
             android:paddingTop="10dp"
             android:paddingBottom="30dp">
 
+            <!-- Got ellipsize from -> -->
+            <!-- https://stackoverflow.com/questions/10748796/android-how-to-limit-width-of-textview-and-add-three-dots-at-the-end-of-text-->
             <TextView
                 android:id="@+id/group_result_view_name"
                 android:layout_width="wrap_content"
@@ -44,7 +46,10 @@
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="15sp"
                 android:fontFamily="sans-serif"
+                android:maxLines="2"
+                android:textAlignment="center"
                 android:text="Group Name"
+                android:ellipsize="end"
                 android:textColor="@color/black"
                 android:textSize="32sp" />
 

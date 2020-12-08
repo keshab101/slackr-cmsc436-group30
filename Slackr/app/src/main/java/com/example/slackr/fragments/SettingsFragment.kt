@@ -53,7 +53,7 @@ class SettingsFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                TODO("Not yet implemented")
+               // Nothing to implement
             }
         })
 
@@ -80,13 +80,13 @@ class SettingsFragment : Fragment() {
                 true
             }
             MENU_SIGN_OUT -> {
-                firebaseAuth.signOut()
                 val intent = Intent(context, MainActivity::class.java)
 
                 // Looked up this
                 // https://medium.com/swlh/truly-understand-tasks-and-back-stack-intent-flags-of-activity-2a137c401eca
                 intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(intent)
+                firebaseAuth.signOut()
                 true
             }
             else -> super.onOptionsItemSelected(item)

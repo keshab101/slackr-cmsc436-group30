@@ -1,16 +1,13 @@
 package com.example.slackr.searchGroupTypes
 
 import android.os.Bundle
-import android.renderscript.Sampler
-import android.util.Log
 import android.view.View
 import android.widget.ListView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import com.example.slackr.*
 import com.example.slackr.R
-import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.example.slackr.groupDisplay.Group
+import com.example.slackr.groupDisplay.GroupListSearchResult
 import com.google.firebase.database.*
 
 class SearchActivity: AppCompatActivity() {

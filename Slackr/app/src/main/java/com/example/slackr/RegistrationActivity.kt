@@ -16,6 +16,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlin.collections.ArrayList
 import kotlin.collections.HashMap
 
+/** Some of the code in this class was derived from Lab-07- Firebase*/
 class RegistrationActivity : AppCompatActivity() {
 
     private var userName: EditText? = null
@@ -25,7 +26,6 @@ class RegistrationActivity : AppCompatActivity() {
     private var progressBar: ProgressBar? = null
     private var validator = Validators()
     private var mAuth: FirebaseAuth? = null
-    private var fStore: FirebaseFirestore? = null
     private lateinit var firebaseRef: FirebaseDatabase
     private lateinit var databaseRef: DatabaseReference
 
@@ -34,7 +34,6 @@ class RegistrationActivity : AppCompatActivity() {
         setContentView(R.layout.activity_registration)
 
         mAuth = FirebaseAuth.getInstance()
-        fStore = FirebaseFirestore.getInstance()
         firebaseRef = FirebaseDatabase.getInstance()
         databaseRef = firebaseRef.getReference("users")
 
@@ -78,54 +77,14 @@ class RegistrationActivity : AppCompatActivity() {
                     Toast.makeText(applicationContext, "User Successfully Created", Toast.LENGTH_LONG).show()
                     progressBar!!.visibility = View.GONE
 
-                    // We will use Firebase Firestore to store other information of user
-                    val userID = mAuth!!.currentUser?.uid
-                    val documentReference = userID?.let { fStore?.collection("users")?.document(it) }
-
+                    val userID = mAuth!!.currentUser?.uid.toString()
                     //Create a Hashmap containing user's name and email
                     val userHash: HashMap<String, String> = HashMap()
                     userHash["userName"] = name
                     userHash["email"] = email
 
-                    //Create a post
-                    val userId = userID.toString()
-                    val pTitle = "Testing post title 1"
-                    val pDesc = "Testing post description 1"
-                    val pTime = System.currentTimeMillis().toString()
-                    val post = GroupPost(pTime, pTitle, pDesc, pTime, userId, name, email)
-                    var membersHash = HashMap<String,String>()
-
-                    membersHash[userId] = userId
-
-                    val group1 = Group("123", "CMSC436", "5", membersHash, "UMD Library", "Study group for CMSC436", "CMSC436")
-                    //val group2 = Group("234", "CMSC420 Group", "2")
-                    //val group3 = Group("234", "Slacker Group", "4")
-
-                    //Put the Hashmap into the firebase
-                    documentReference!!.set(userHash as Map<String, Any>).addOnCompleteListener { task ->
-                        if (task.isSuccessful) {
-                            Log.d("User Hashmap", "User profile created for - $userID")
-                        }
-                    }
                     //Storing the user's information in database
                     databaseRef.child(userID).setValue(userHash)
-
-                    val groupDB = FirebaseDatabase.getInstance().getReference("groups")
-                    val id = (groupDB.push()).key.toString()
-                    groupDB.child(id).setValue(group1)
-                    groupDB.child(id).child("posts").push().setValue(post)
-
-                    //val memberArray = ArrayList<String>()
-                    //memberArray.add(userID)
-                    //groupDB.child(id).child("members").push().setValue(memberArray)
-                    //groupDB.child(id).child("members").child(userID).setValue(userID)
-
-                    //val userExampleGroup = ArrayList<String>()
-                    //userExampleGroup.add(id)
-                    //databaseRef.child(userID).child("groups").setValue(userExampleGroup)
-
-                    //groupDB.push().setValue(group2)
-                    //groupDB.push().setValue(group3)
 
                     val intent = Intent(this@RegistrationActivity, LoginActivity::class.java)
                     startActivity(intent)
